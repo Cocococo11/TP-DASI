@@ -21,14 +21,14 @@ public class PersonneDao {
         return em.find(Personne.class, clientId); // renvoie null si l'identifiant n'existe pas
     }
     
-    public Personne chercherParMail(String clientMail) {
+    public Personne chercherParMail(String idMail) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Personne> query = em.createQuery("SELECT c FROM Personne c WHERE c.mail = :mail", Personne.class);
-        query.setParameter("mail", clientMail); // correspond au paramètre ":mail" dans la requête
-        List<Personne> clients = query.getResultList();
+        TypedQuery<Personne> query = em.createQuery("SELECT p FROM Personne p WHERE p.mail = :mail", Personne.class);
+        query.setParameter("mail", idMail); // correspond au paramètre ":mail" dans la requête
+        List<Personne> personnes = query.getResultList();
         Personne result = null;
-        if (!clients.isEmpty()) {
-            result = clients.get(0); // premier de la liste
+        if (!personnes.isEmpty()) {
+            result = personnes.get(0); // premier de la liste
         }
         return result;
     }

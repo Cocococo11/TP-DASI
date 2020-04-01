@@ -26,7 +26,7 @@ public class Main {
         testerInscriptionPersonnes();       // Question 4 & 5
         //testerRechercheClient();         // Question 6
         //testerListeClients();            // Question 7
-        //testerAuthentificationClient();  // Question 8
+        testerAuthentificationClient();  // Question 8
         //saisirInscriptionClient();       // Question 9
         //saisirRechercheClient();
 
@@ -182,36 +182,36 @@ public class Main {
         System.out.println();
         
         Service service = new Service();
-        Personne client;
+        Personne personne;
         String mail;
         String motDePasse;
 
-        mail = "ada.lovelace@insa-lyon.fr";
-        motDePasse = "Ada1012";
-        client = service.authentifierPersonne(mail, motDePasse);
-        if (client != null) {
+        mail = "blaise";
+        motDePasse = "blaise";
+        personne = service.authentifierPersonne(mail, motDePasse);
+        if (personne != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
-            afficherPersonnes(client);
+            afficherPersonnes(personne);
         } else {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
 
         mail = "ada.lovelace@insa-lyon.fr";
         motDePasse = "Ada2020";
-        client = service.authentifierPersonne(mail, motDePasse);
-        if (client != null) {
+        personne = service.authentifierPersonne(mail, motDePasse);
+        if (personne != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
-            afficherPersonnes(client);
+            afficherPersonnes(personne);
         } else {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
 
         mail = "etudiant.fictif@insa-lyon.fr";
         motDePasse = "********";
-        client = service.authentifierPersonne(mail, motDePasse);
-        if (client != null) {
+        personne = service.authentifierPersonne(mail, motDePasse);
+        if (personne != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
-            afficherPersonnes(client);
+            afficherPersonnes(personne);
         } else {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
