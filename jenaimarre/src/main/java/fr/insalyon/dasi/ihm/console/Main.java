@@ -163,7 +163,7 @@ public class Main {
         System.out.println();
         
         Service service = new Service();
-        List<Personne> listeClients = service.listerClients();
+        List<Personne> listeClients = service.listerPersonnes();
         System.out.println("*** Liste des Clients");
         if (listeClients != null) {
             for (Personne client : listeClients) {
@@ -188,7 +188,7 @@ public class Main {
 
         mail = "ada.lovelace@insa-lyon.fr";
         motDePasse = "Ada1012";
-        client = service.authentifierClient(mail, motDePasse);
+        client = service.authentifierPersonne(mail, motDePasse);
         if (client != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
             afficherClient(client);
@@ -198,7 +198,7 @@ public class Main {
 
         mail = "ada.lovelace@insa-lyon.fr";
         motDePasse = "Ada2020";
-        client = service.authentifierClient(mail, motDePasse);
+        client = service.authentifierPersonne(mail, motDePasse);
         if (client != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
             afficherClient(client);
@@ -208,7 +208,7 @@ public class Main {
 
         mail = "etudiant.fictif@insa-lyon.fr";
         motDePasse = "********";
-        client = service.authentifierClient(mail, motDePasse);
+        client = service.authentifierPersonne(mail, motDePasse);
         if (client != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
             afficherClient(client);
@@ -292,7 +292,7 @@ public class Main {
 
         while (!clientMail.equals("0")) {
             String clientMotDePasse = Saisie.lireChaine("Mot de passe ? ");
-            Personne client = service.authentifierClient(clientMail, clientMotDePasse);
+            Personne client = service.authentifierPersonne(clientMail, clientMotDePasse);
             if (client != null) {
                 afficherClient(client);
             } else {
