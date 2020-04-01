@@ -22,8 +22,8 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        initialiserClients();            // Question 3
-        //testerInscriptionClient();       // Question 4 & 5
+        initialiserPersonnes();            // Question 3
+        testerInscriptionPersonnes();       // Question 4 & 5
         //testerRechercheClient();         // Question 6
         //testerListeClients();            // Question 7
         //testerAuthentificationClient();  // Question 8
@@ -33,14 +33,14 @@ public class Main {
         JpaUtil.destroy();
     }
 
-    public static void afficherClient(Personne client) {
-        System.out.println("-> " + client);
+    public static void afficherPersonnes(Personne personne) {
+        System.out.println("-> " + personne);
     }
 
-    public static void initialiserClients() {
+    public static void initialiserPersonnes() {
         
         System.out.println();
-        System.out.println("**** initialiserClients() ****");
+        System.out.println("**** initialiserPersonnes() ****");
         System.out.println();
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
@@ -51,10 +51,10 @@ public class Main {
         Personne fred = new Personne("Fotiadu", "Frédéric", "fred", "fred","066666666");
         
         System.out.println();
-        System.out.println("** Clients avant persistance: ");
-        afficherClient(ada);
-        afficherClient(blaise);
-        afficherClient(fred);
+        System.out.println("** Personnes avant persistance: ");
+        afficherPersonnes(ada);
+        afficherPersonnes(blaise);
+        afficherPersonnes(fred);
         System.out.println();
 
         try {
@@ -76,17 +76,17 @@ public class Main {
         }
 
         System.out.println();
-        System.out.println("** Clients après persistance: ");
-        afficherClient(ada);
-        afficherClient(blaise);
-        afficherClient(fred);
+        System.out.println("** Personnes après persistance: ");
+        afficherPersonnes(ada);
+        afficherPersonnes(blaise);
+        afficherPersonnes(fred);
         System.out.println();
     }
 
-    public static void testerInscriptionClient() {
+    public static void testerInscriptionPersonnes() {
         
         System.out.println();
-        System.out.println("**** testerInscriptionClient() ****");
+        System.out.println("**** testerInscriptionPersonnes() ****");
         System.out.println();
         
         Service service = new Service();
@@ -97,7 +97,7 @@ public class Main {
         } else {
             System.out.println("> Échec inscription");
         }
-        afficherClient(claude);
+        afficherPersonnes(claude);
 
         Personne hedy = new Personne("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi","066666666");
         Long idHedy = service.inscrirePersonne(hedy);
@@ -106,7 +106,7 @@ public class Main {
         } else {
             System.out.println("> Échec inscription");
         }
-        afficherClient(hedy);
+        afficherPersonnes(hedy);
 
         Personne hedwig = new Personne("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi","066666666");
         Long idHedwig = service.inscrirePersonne(hedwig);
@@ -115,7 +115,7 @@ public class Main {
         } else {
             System.out.println("> Échec inscription");
         }
-        afficherClient(hedwig);
+        afficherPersonnes(hedwig);
     }
 
     public static void testerRechercheClient() {
@@ -132,7 +132,7 @@ public class Main {
         System.out.println("** Recherche du Client #" + id);
         client = service.rechercherClientParId(id);
         if (client != null) {
-            afficherClient(client);
+            afficherPersonnes(client);
         } else {
             System.out.println("=> Client non-trouvé");
         }
@@ -141,7 +141,7 @@ public class Main {
         System.out.println("** Recherche du Client #" + id);
         client = service.rechercherClientParId(id);
         if (client != null) {
-            afficherClient(client);
+            afficherPersonnes(client);
         } else {
             System.out.println("=> Client non-trouvé");
         }
@@ -150,7 +150,7 @@ public class Main {
         System.out.println("** Recherche du Client #" + id);
         client = service.rechercherClientParId(id);
         if (client != null) {
-            afficherClient(client);
+            afficherPersonnes(client);
         } else {
             System.out.println("=> Client #" + id + " non-trouvé");
         }
@@ -167,7 +167,7 @@ public class Main {
         System.out.println("*** Liste des Clients");
         if (listeClients != null) {
             for (Personne client : listeClients) {
-                afficherClient(client);
+                afficherPersonnes(client);
             }
         }
         else {
@@ -178,7 +178,7 @@ public class Main {
     public static void testerAuthentificationClient() {
         
         System.out.println();
-        System.out.println("**** testerAuthentificationClient() ****");
+        System.out.println("**** testerAuthentificationPersonne() ****");
         System.out.println();
         
         Service service = new Service();
@@ -191,7 +191,7 @@ public class Main {
         client = service.authentifierPersonne(mail, motDePasse);
         if (client != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
-            afficherClient(client);
+            afficherPersonnes(client);
         } else {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
@@ -201,7 +201,7 @@ public class Main {
         client = service.authentifierPersonne(mail, motDePasse);
         if (client != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
-            afficherClient(client);
+            afficherPersonnes(client);
         } else {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
@@ -211,7 +211,7 @@ public class Main {
         client = service.authentifierPersonne(mail, motDePasse);
         if (client != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
-            afficherClient(client);
+            afficherPersonnes(client);
         } else {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
@@ -243,7 +243,7 @@ public class Main {
         } else {
             System.out.println("> Échec inscription");
         }
-        afficherClient(client);
+        afficherPersonnes(client);
 
     }
 
@@ -271,7 +271,7 @@ public class Main {
         while (idClient != 0) {
             Personne client = service.rechercherClientParId(idClient.longValue());
             if (client != null) {
-                afficherClient(client);
+                afficherPersonnes(client);
             } else {
                 System.out.println("=> Client #" + idClient + " non-trouvé");
             }
@@ -294,7 +294,7 @@ public class Main {
             String clientMotDePasse = Saisie.lireChaine("Mot de passe ? ");
             Personne client = service.authentifierPersonne(clientMail, clientMotDePasse);
             if (client != null) {
-                afficherClient(client);
+                afficherPersonnes(client);
             } else {
                 System.out.println("=> Client non-authentifié");
             }

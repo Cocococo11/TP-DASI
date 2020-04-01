@@ -23,7 +23,7 @@ public class PersonneDao {
     
     public Personne chercherParMail(String clientMail) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Personne> query = em.createQuery("SELECT c FROM Client c WHERE c.mail = :mail", Personne.class);
+        TypedQuery<Personne> query = em.createQuery("SELECT c FROM Personne c WHERE c.mail = :mail", Personne.class);
         query.setParameter("mail", clientMail); // correspond au paramètre ":mail" dans la requête
         List<Personne> clients = query.getResultList();
         Personne result = null;
