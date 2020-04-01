@@ -1,0 +1,65 @@
+DASI Project
+
+Predict’if: fortune telling firm by phone.  Mediums are spiritualists, fortune tellers or astrologers.  Respond to all questions of sentimental matters,
+professional or psychological in the strictest respect of deontology
+
+!) Description
+
+Alice (client):
+* Web site: liste and qualifications of mediums 
+* Option to create an account
+    * Fill out a formula: name and last name, birth date, postal address, phone number, email, and password
+    * Receive a conformation email after created an account (see example 1 in sujet for the format)
+    * Receive an email saying the sign up was not successful 
+* Login page: email address and password, after logging in directed to profile page
+* Profile page: zodiac sign, Chinese zodiac sign, lucky color, and animal totem
+* Find a medium: select one from the list and wait for a telephone response 
+* Receive a phone call telling her how to get in touch with the medium (see example 2 for the telephone format message)
+* Can then call the medium directly 
+* She prefers the spiritualists, but she also likes to converse with the fortune tellers, especially Mm Irma
+* She does not regret it
+
+
+Camille (employee) :
+* Works at home with a professional computer and telephone
+* Work starts when she receives a phone call from a client (see example 3 for the format)
+* She was selected from the application to be the medium for the client, even though she is not Mme Irma
+    * Selected because she was not online with another customer 
+    * Also a female, same as the client chose
+    * The application verifies that the work is equally distributed
+    * Camille accounts for less than other eligible colleges 
+* She connects to the agency website
+* Consultes the astrological profile of the client and consultation history
+* When she is ready, she indicates it in the platform then waits for her client’s call
+* The client callers her, she uses information from the application when she runs out of things to say 
+    * She puts in three grades from 1 to 4 and gets three predictions: love, health, and work
+* Hangs up the phones and validates the consultation on the application
+    * Comments on the consultation for her colleagues
+    * Looks at the graphs that summarize the company’s activity
+        * Number of consultations per medium
+        * Distribution of customers per employee
+        * Top 5 mediums chosen, etc.
+
+
+2) Work to do
+
+* Understanding the business area of the company PREDICT'IF
+* Designing the Domain Model
+* Design the mock-ups of the web GUI for clients and the web GUI for employees
+* Specify the services required for the 2 HMIs
+* Develop these services while respecting the layered architecture as seen in progress and using a console HMI for testing
+
+3.   Hypotheses
+
+* There are about 5,000 clients, about 20 mediums, and about 15 employees.
+* Consultation requests are processed instantaneously (no reservation, no list, etc. waiting). If no employee is available, the application is rejected.
+* The astral profile of the customers is calculated by the web service "IfAstroNet".
+* Predictions displayed to help employees are also provided by "IfAstroNet".
+* Passwords are saved without being encrypted.
+* E-mail addresses of customers and employees are assumed to be correct and unique.
+* Email sending and notifications are simulated by display in the console.
+* Employees and mediums are created "hard" beforehand by an initialization service that you’ll have to develop
+
+Profile and medium profile examples at bottom of document
+
+
