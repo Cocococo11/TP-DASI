@@ -46,7 +46,7 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Personne ada = new Personne("Lovelace", "Ada", "ada", "ada");
+        Personne ada = new Personne("Lovelace", "Ada", "tue", "moi");
         Personne blaise = new Personne("Pascal", "Blaise", "blaise", "blaise");
         Personne fred = new Personne("Fotiadu", "Frédéric", "fred", "fred");
         
