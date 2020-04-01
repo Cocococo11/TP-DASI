@@ -13,16 +13,16 @@ import java.util.logging.Logger;
  */
 public class Service {
 
-    protected PersonneDao clientDao = new PersonneDao();
+    protected PersonneDao personneDao = new PersonneDao();
 
-    public Long inscrireClient(Personne client) {
+    public Long inscrirePersonne(Personne personne) {
         Long resultat = null;
         JpaUtil.creerContextePersistance();
         try {
             JpaUtil.ouvrirTransaction();
-            clientDao.creer(client);
+            personneDao.creer(personne);
             JpaUtil.validerTransaction();
-            resultat = client.getId();
+            resultat = personne.getId();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service inscrireClient(client)", ex);
             JpaUtil.annulerTransaction();
