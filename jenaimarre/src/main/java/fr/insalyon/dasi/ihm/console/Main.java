@@ -46,9 +46,9 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Personne ada = new Personne("Lovelace", "Ada", "merci", "pour ta patience");
-        Personne blaise = new Personne("Pascal", "Blaise", "blaise", "blaise");
-        Personne fred = new Personne("Fotiadu", "Frédéric", "fred", "fred");
+        Personne ada = new Personne("Lovelace", "Ada", "merci", "pour ta patience","066666666");
+        Personne blaise = new Personne("Pascal", "Blaise", "blaise", "blaise","066666666");
+        Personne fred = new Personne("Fotiadu", "Frédéric", "fred", "fred","066666666");
         
         System.out.println();
         System.out.println("** Clients avant persistance: ");
