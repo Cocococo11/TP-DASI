@@ -91,7 +91,7 @@ public class Main {
         
         Service service = new Service();
         Personne claude = new Personne("Chappe", "Claude", "claude.chappe@insa-lyon.fr", "HaCKeR","066666666");
-        Long idClaude = service.inscrireClient(claude);
+        Long idClaude = service.inscrirePersonne(claude);
         if (idClaude != null) {
             System.out.println("> Succès inscription");
         } else {
@@ -100,7 +100,7 @@ public class Main {
         afficherClient(claude);
 
         Personne hedy = new Personne("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi","066666666");
-        Long idHedy = service.inscrireClient(hedy);
+        Long idHedy = service.inscrirePersonne(hedy);
         if (idHedy != null) {
             System.out.println("> Succès inscription");
         } else {
@@ -109,7 +109,7 @@ public class Main {
         afficherClient(hedy);
 
         Personne hedwig = new Personne("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi","066666666");
-        Long idHedwig = service.inscrireClient(hedwig);
+        Long idHedwig = service.inscrirePersonne(hedwig);
         if (idHedwig != null) {
             System.out.println("> Succès inscription");
         } else {
