@@ -90,7 +90,7 @@ public class Main {
         System.out.println();
         
         Service service = new Service();
-        Personne claude = new Personne("Chappe", "Claude", "claude.chappe@insa-lyon.fr", "HaCKeR");
+        Personne claude = new Personne("Chappe", "Claude", "claude.chappe@insa-lyon.fr", "HaCKeR","066666666");
         Long idClaude = service.inscrireClient(claude);
         if (idClaude != null) {
             System.out.println("> Succès inscription");
@@ -99,7 +99,7 @@ public class Main {
         }
         afficherClient(claude);
 
-        Personne hedy = new Personne("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi");
+        Personne hedy = new Personne("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi","066666666");
         Long idHedy = service.inscrireClient(hedy);
         if (idHedy != null) {
             System.out.println("> Succès inscription");
@@ -108,7 +108,7 @@ public class Main {
         }
         afficherClient(hedy);
 
-        Personne hedwig = new Personne("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi");
+        Personne hedwig = new Personne("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi","066666666");
         Long idHedwig = service.inscrireClient(hedwig);
         if (idHedwig != null) {
             System.out.println("> Succès inscription");
@@ -235,7 +235,7 @@ public class Main {
         String mail = Saisie.lireChaine("Mail ? ");
         String motDePasse = Saisie.lireChaine("Mot de passe ? ");
 
-        Personne client = new Personne(nom, prenom, mail, motDePasse);
+        Personne client = new Personne(nom, prenom, mail, motDePasse,"066666666");
         Long idClient = service.inscrireClient(client);
 
         if (idClient != null) {
