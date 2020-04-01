@@ -47,16 +47,16 @@ public class Service {
         return resultat;
     }
 
-    public Personne authentifierClient(String mail, String motDePasse) {
+    public Personne authentifierPersonne(String mail, String motDePasse) {
         Personne resultat = null;
         JpaUtil.creerContextePersistance();
         try {
-            // Recherche du client
-            Personne client = personneDao.chercherParMail(mail);
-            if (client != null) {
+            // Recherche de la personne
+            Personne personne = personneDao.chercherParMail(mail);
+            if (personne != null) {
                 // Vérification du mot de passe
-                if (client.getMotDePasse().equals(motDePasse)) {
-                    resultat = client;
+                if (personne.getMotDePasse().equals(motDePasse)) {
+                    resultat = personne;
                 }
             }
         } catch (Exception ex) {
@@ -68,13 +68,13 @@ public class Service {
         return resultat;
     }
 
-    public List<Personne> listerClients() {
+    public List<Personne> listerPersonnes() {
         List<Personne> resultat = null;
         JpaUtil.creerContextePersistance();
         try {
-            resultat = personneDao.listerClients();
+            resultat = personneDao.listerPersonnes();
         } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerClients()", ex);
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerPersonnes()", ex);
             resultat = null;
         } finally {
             JpaUtil.fermerContextePersistance();
