@@ -18,7 +18,7 @@ public class Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
+    private String nom; 
     private String prenom;
     @Column(unique = true)
     private String mail;
@@ -28,11 +28,12 @@ public class Personne implements Serializable {
     protected Personne() {
     }
 
-    public Personne(String nom, String prenom, String mail, String motDePasse) {
+    public Personne(String nom, String prenom, String mail, String motDePasse, String telephone) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.motDePasse = motDePasse;
+        this.telephone = telephone;
     }
 
     public Long getId() {
@@ -71,6 +72,14 @@ public class Personne implements Serializable {
         this.motDePasse = motDePasse;
     }
 
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+    
     @Override
     public String toString() {
         return "Personne : id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", motDePasse=" + motDePasse;
