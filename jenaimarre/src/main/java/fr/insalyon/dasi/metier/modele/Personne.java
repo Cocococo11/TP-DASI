@@ -12,7 +12,6 @@ import javax.persistence.Id;
  * @author DASI Team
  */
 @Entity
-// JE HAIS CODER
 public class Personne implements Serializable {
 
     @Id
@@ -82,7 +81,7 @@ public class Personne implements Serializable {
     
     @Override
     public String toString() {
-        return "Personne : id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", motDePasse=" + motDePasse;
+        return "Personne : id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", motDePasse=" + motDePasse + "Telephone=" + telephone;
     }
     
 
