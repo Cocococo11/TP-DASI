@@ -11,6 +11,7 @@ import javax.persistence.Id;
  *
  * @author DASI Team
  */
+// abstract
 @Entity
 public class Personne implements Serializable {
 
