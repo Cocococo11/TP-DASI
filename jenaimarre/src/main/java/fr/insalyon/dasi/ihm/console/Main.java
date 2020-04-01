@@ -236,7 +236,7 @@ public class Main {
         String motDePasse = Saisie.lireChaine("Mot de passe ? ");
 
         Personne client = new Personne(nom, prenom, mail, motDePasse,"066666666");
-        Long idClient = service.inscrireClient(client);
+        Long idClient = service.inscrirePersonne(client);
 
         if (idClient != null) {
             System.out.println("> Succès inscription");

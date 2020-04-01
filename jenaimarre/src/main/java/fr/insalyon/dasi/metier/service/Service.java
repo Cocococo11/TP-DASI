@@ -37,7 +37,7 @@ public class Service {
         Personne resultat = null;
         JpaUtil.creerContextePersistance();
         try {
-            resultat = clientDao.chercherParId(id);
+            resultat = personneDao.chercherParId(id);
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service rechercherClientParId(id)", ex);
             resultat = null;
@@ -52,7 +52,7 @@ public class Service {
         JpaUtil.creerContextePersistance();
         try {
             // Recherche du client
-            Personne client = clientDao.chercherParMail(mail);
+            Personne client = personneDao.chercherParMail(mail);
             if (client != null) {
                 // Vérification du mot de passe
                 if (client.getMotDePasse().equals(motDePasse)) {
@@ -72,7 +72,7 @@ public class Service {
         List<Personne> resultat = null;
         JpaUtil.creerContextePersistance();
         try {
-            resultat = clientDao.listerClients();
+            resultat = personneDao.listerClients();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerClients()", ex);
             resultat = null;
