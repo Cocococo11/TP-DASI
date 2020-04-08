@@ -70,7 +70,7 @@ public class Main {
         try {
             em.getTransaction().begin();
             em.persist(ada);
-            //em.persist(wouhou);
+            em.persist(wouhou);
             em.persist(blaise);
             em.persist(prout);
             em.getTransaction().commit();
