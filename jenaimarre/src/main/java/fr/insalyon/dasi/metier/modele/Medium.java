@@ -23,7 +23,7 @@ import javax.persistence.Id;
 public abstract class Medium implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
+    protected long Id;
     protected String denomination;
     protected String genre;
     protected String presentation;
