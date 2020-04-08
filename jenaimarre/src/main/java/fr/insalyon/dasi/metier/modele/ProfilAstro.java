@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import org.apache.http.message.BasicNameValuePair;
  * @version 08/04/20 08:08 GMT-5
  * @author maddie
  */
-public class ProfilAstro {
+public class ProfilAstro implements Serializable {
 
     final static String MA_CLE_ASTRO_API = "B3401-ASTRO-01-M0lGLURBU0ktQVNUUk8tQjAx";
 

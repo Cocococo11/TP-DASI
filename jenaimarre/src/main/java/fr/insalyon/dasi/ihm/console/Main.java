@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Date;
 // 
 /**
  * @version 07/04/20 22:12
@@ -56,7 +57,7 @@ public class Main {
         Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
         Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
         Medium wouhou = new Cartomancien("pouf","pif","paf");
-        Personne prout = new Client("prout", "prout", "fred", "fred","066666666",new java.util.Date(),"lol");
+        Personne prout = new Client("prout", "prout", "fred", "fred","066666666",parseDate("2014-02-14"),"lol");
         
         
         System.out.println();
