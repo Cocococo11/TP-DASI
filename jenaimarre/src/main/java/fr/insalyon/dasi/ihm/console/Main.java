@@ -56,6 +56,8 @@ public class Main {
         Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
         Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
         Medium wouhou = new Cartomancien("pouf","pif","paf");
+        Personne prout = new Client("prout", "prout", "fred", "fred","066666666",new java.util.Date(),"lol");
+        
         
         System.out.println();
         System.out.println("** Personnes avant persistance: ");
