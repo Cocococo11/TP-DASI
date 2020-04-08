@@ -16,9 +16,11 @@ public class Astrologue extends Medium {
     private String promotion;
     private String formation;
     
-    public Astrologue(String denomination, String genre, String presentation){
+    public Astrologue(String denomination, String genre, String presentation, String promotion,String formation){
         super(denomination, genre, presentation);
-        
+        this.formation = formation;
+        this.promotion= promotion;
+           
     }
     
     protected Astrologue() {

@@ -23,9 +23,9 @@ public class Spirite extends Medium {
         this.support = support;
     }
     
-    public Spirite(String denomination, String genre, String presentation){
+    public Spirite(String denomination, String genre, String presentation, String support){
         super(denomination, genre, presentation);
-        
+        this.support= support;
     }
     
     protected Spirite() {
