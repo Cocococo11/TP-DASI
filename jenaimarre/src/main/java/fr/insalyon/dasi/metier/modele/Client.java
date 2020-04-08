@@ -22,15 +22,42 @@ public class Client extends Personne {
     List<String> profilAttributs;
     private String civilite;
     
-    public Client(String nom, String prenom, String mail, String motDePasse, String telephone, Date dateNaissance) {
+    public Client(String nom, String prenom, String mail, String motDePasse, String telephone, Date dateNaissance, String civilite) {
         super(nom, prenom, mail, motDePasse, telephone);
         
         profil = new ProfilAstro();
         this.dateNaissance = dateNaissance;
+        this.civilite=civilite;
+    }
+
+    public ProfilAstro getProfil() {
+        return profil;
+    }
+
+    public void setProfil(ProfilAstro profil) {
+        this.profil = profil;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public List<String> getProfilAttributs() {
+        return profilAttributs;
+    }
+
+    public void setProfilAttributs(List<String> profilAttributs) {
+        this.profilAttributs = profilAttributs;
     }
     
      
-    protected Client() {}
+    protected Client() {
+        
+    }
     
     
     /*
@@ -43,15 +70,6 @@ public class Client extends Personne {
         catch(Exception e) {
             System.out.println("/!\\ Erreur d'affectation de la liste des attributs du profil astro !\\");
         }
-
-    
-
-    public String getCivilite() {
-        return civilite;
-    }
-
-    public void setCivilite(String civilite) {
-        this.civilite = civilite;
     }
     
     @Override
