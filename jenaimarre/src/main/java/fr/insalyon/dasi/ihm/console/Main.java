@@ -2,6 +2,7 @@ package fr.insalyon.dasi.ihm.console;
 
 import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.metier.modele.Client;
+import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.service.Service;
 import java.util.List;
@@ -47,8 +48,8 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Client ada = new Client("Lovelace", "Ada", "merci", "test heritage","066666666");
-        Personne blaise = new Client("Pascal", "Blaise", "blaise", "blaise","066666666");
+        Personne ada = new Client("Lovelace", "Ada", "merci", "test heritage","066666666");
+        Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
         Personne fred = new Client("Fotiadu", "Frédéric", "fred", "fred","066666666");
         
         System.out.println();
