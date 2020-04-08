@@ -12,10 +12,21 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Employe extends Personne {
-    public Employe(String nom, String prenom, String mail, String motDePasse, String telephone) {
-        super(nom, prenom, mail, motDePasse, telephone);
-    }
     
+    private String genre;
+    public Employe(String nom, String prenom, String mail, String motDePasse, String telephone, String genre) {
+        super(nom, prenom, mail, motDePasse, telephone);
+        this.genre= genre;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     protected Employe() {
     }
     

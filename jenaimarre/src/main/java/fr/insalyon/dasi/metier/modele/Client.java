@@ -31,6 +31,7 @@ public class Client extends Personne {
         profil = new ProfilAstro();
         this.dateNaissance = dateNaissance;
         this.civilite=civilite;
+        this.definirAttributs();
     }
 
     public ProfilAstro getProfil() {
@@ -68,10 +69,10 @@ public class Client extends Personne {
     */
     private void definirAttributs() {
         try {
-            profilAttributs = profil.getProfil(nom, dateNaissance);
+            profilAttributs = profil.getProfil(prenom, dateNaissance);
         }
         catch(Exception e) {
-            System.out.println("/!\\ Erreur d'affectation de la liste des attributs du profil astro !\\");
+            System.out.println("/!\\ Erreur d'affectation de la liste des attributs du profil astro /!\\");
         }
     }
     
