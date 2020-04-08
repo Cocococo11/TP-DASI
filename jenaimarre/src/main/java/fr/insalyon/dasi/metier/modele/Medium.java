@@ -22,7 +22,11 @@ public abstract class Medium implements Serializable {
     private String denomination;
     private String genre;
     private String presentation;
-
+    
+    protected Medium() {
+        
+    }
+    
     public Medium(String denomination, String genre, String presentation) {
         this.denomination = denomination;
         this.genre = genre;
