@@ -5,6 +5,7 @@
  */
 package fr.insalyon.dasi.metier.modele;
 
+import fr.insalyon.dasi.metier.service.Service;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Temporal;
@@ -62,7 +63,6 @@ public class Client extends Personne {
         
     }
     
-    
     /*
     Affecter la liste avec les valeurs du profil astro
     */
@@ -73,6 +73,29 @@ public class Client extends Personne {
         catch(Exception e) {
             System.out.println("/!\\ Erreur d'affectation de la liste des attributs du profil astro !\\");
         }
+    }
+    
+    /*
+    * Demander une consultation avec un medium
+    */
+    public void demanderConsultation() {
+        System.out.println();
+        System.out.println("**** Les Mediums ****");
+        System.out.println();
+        
+        Service service = new Service();
+        List<Medium> listeMediums = service.listerMediums();
+        if (listeMediums != null) {
+            for (Medium medium : listeMediums) {
+                System.out.println("-> " + medium);
+            }
+        }
+        else {
+            System.out.println("=> ERREUR...");
+        }
+        
+        long choix = 2;
+        
     }
     
     @Override

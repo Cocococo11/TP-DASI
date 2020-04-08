@@ -12,8 +12,12 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Employe extends Personne {
+    
+    protected boolean disponible;
+    
     public Employe(String nom, String prenom, String mail, String motDePasse, String telephone) {
         super(nom, prenom, mail, motDePasse, telephone);
+        disponible = true;
     }
     
     protected Employe() {
@@ -22,6 +26,10 @@ public class Employe extends Personne {
     @Override
     public String toString() {
         return "Employe : id=" + this.getId()+ ", nom=" + this.getNom() + ", prenom=" + this.getPrenom() + ", mail=" + this.getMail() + ", motDePasse=" + this.getMotDePasse() + "Telephone=" + this.getTelephone();
+    }
+    
+    public void creerConsultation() {
+        
     }
     
 }

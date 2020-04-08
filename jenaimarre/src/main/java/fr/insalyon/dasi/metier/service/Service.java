@@ -3,6 +3,7 @@ package fr.insalyon.dasi.metier.service;
 import fr.insalyon.dasi.dao.PersonneDao;
 import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.metier.modele.Personne;
+import fr.insalyon.dasi.metier.modele.Medium;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,6 +74,20 @@ public class Service {
         JpaUtil.creerContextePersistance();
         try {
             resultat = personneDao.listerPersonnes();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerPersonnes()", ex);
+            resultat = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return resultat;
+    }
+    
+    public List<Medium> listerMediums() {
+        List<Medium> resultat = null;
+        JpaUtil.creerContextePersistance();
+        try {
+            resultat = personneDao.listerMediums();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerPersonnes()", ex);
             resultat = null;
