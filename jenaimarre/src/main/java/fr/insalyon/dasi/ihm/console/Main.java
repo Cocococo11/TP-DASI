@@ -5,6 +5,10 @@ import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.service.Service;
+import fr.insalyon.dasi.metier.modele.Spirite;
+import fr.insalyon.dasi.metier.modele.Astrologue;
+import fr.insalyon.dasi.metier.modele.Medium;
+import fr.insalyon.dasi.metier.modele.Cartomancien;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +55,7 @@ public class Main {
         Personne ada = new Client("Lovelace", "Ada", "merci", "test heritage","066666666");
         Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
         Personne fred = new Client("Fotiadu", "Frédéric", "fred", "fred","066666666");
+        Medium wouhou = new Cartomancien("pouf","pif","paf");
         
         System.out.println();
         System.out.println("** Personnes avant persistance: ");
@@ -62,6 +67,7 @@ public class Main {
         try {
             em.getTransaction().begin();
             em.persist(ada);
+            em.persist(wouhou);
             em.persist(blaise);
             em.persist(fred);
             em.getTransaction().commit();

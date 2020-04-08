@@ -6,7 +6,10 @@
 package fr.insalyon.dasi.metier.modele;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Id;
@@ -19,6 +22,8 @@ import javax.persistence.Id;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Medium implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private String denomination;
     private String genre;
     private String presentation;
