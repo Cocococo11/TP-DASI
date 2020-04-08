@@ -24,10 +24,10 @@ public class Main {
         JpaUtil.init();
 
         initialiserPersonnes();            // Question 3
-        testerInscriptionPersonnes();       // Question 4 & 5
+        //testerInscriptionPersonnes();       // Question 4 & 5
         //testerRechercheClient();         // Question 6
         //testerListeClients();            // Question 7
-        testerAuthentificationClient();  // Question 8
+        //testerAuthentificationClient();  // Question 8
         //saisirInscriptionClient();       // Question 9
         //saisirRechercheClient();
 
@@ -47,7 +47,7 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Personne ada = new Client("Lovelace", "Ada", "merci", "pour ta patience","066666666");
+        Client ada = new Client("Lovelace", "Ada", "merci", "test heritage","066666666");
         Personne blaise = new Client("Pascal", "Blaise", "blaise", "blaise","066666666");
         Personne fred = new Client("Fotiadu", "Frédéric", "fred", "fred","066666666");
         
