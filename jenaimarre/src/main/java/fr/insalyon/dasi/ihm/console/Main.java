@@ -52,9 +52,9 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Personne ada = new Client("Lovelace", "Ada", "merci", "test heritage","066666666");
+        Personne ada = new Employe("Lovelace", "Ada", "merci", "test heritage","066666666");
         Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
-        Personne fred = new Client("Fotiadu", "Frédéric", "fred", "fred","066666666");
+        Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
         Medium wouhou = new Cartomancien("pouf","pif","paf");
         
         System.out.println();
@@ -98,7 +98,7 @@ public class Main {
         System.out.println();
         
         Service service = new Service();
-        Personne claude = new Client("Chappe", "Claude", "claude.chappe@insa-lyon.fr", "HaCKeR","066666666");
+        Personne claude = new Employe("Chappe", "Claude", "claude.chappe@insa-lyon.fr", "HaCKeR","066666666");
         Long idClaude = service.inscrirePersonne(claude);
         if (idClaude != null) {
             System.out.println("> Succès inscription");
@@ -107,7 +107,7 @@ public class Main {
         }
         afficherPersonnes(claude);
 
-        Personne hedy = new Client("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi","066666666");
+        Personne hedy = new Employe("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi","066666666");
         Long idHedy = service.inscrirePersonne(hedy);
         if (idHedy != null) {
             System.out.println("> Succès inscription");
@@ -116,7 +116,7 @@ public class Main {
         }
         afficherPersonnes(hedy);
 
-        Personne hedwig = new Client("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi","066666666");
+        Personne hedwig = new Employe("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi","066666666");
         Long idHedwig = service.inscrirePersonne(hedwig);
         if (idHedwig != null) {
             System.out.println("> Succès inscription");
@@ -243,7 +243,7 @@ public class Main {
         String mail = Saisie.lireChaine("Mail ? ");
         String motDePasse = Saisie.lireChaine("Mot de passe ? ");
 
-        Personne client = new Client(nom, prenom, mail, motDePasse,"066666666");
+        Personne client = new Employe(nom, prenom, mail, motDePasse,"066666666");
         Long idClient = service.inscrirePersonne(client);
 
         if (idClient != null) {
