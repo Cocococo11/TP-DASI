@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
+ * @version 08/04/20 19:00 GMT-5
  * @author DASI Team
  */
 // abstract
@@ -17,13 +17,13 @@ public abstract class Personne implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nom; 
-    private String prenom;
+    protected Long id;
+    protected String nom; 
+    protected String prenom;
     @Column(unique = true)
-    private String mail;
-    private String motDePasse;
-    private String telephone;
+    protected String mail;
+    protected String motDePasse;
+    protected String telephone;
 
     protected Personne() {
     }
