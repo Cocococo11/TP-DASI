@@ -24,9 +24,9 @@ public abstract class Medium implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
-    private String denomination;
-    private String genre;
-    private String presentation;
+    protected String denomination;
+    protected String genre;
+    protected String presentation;
     
     protected Medium() {
         

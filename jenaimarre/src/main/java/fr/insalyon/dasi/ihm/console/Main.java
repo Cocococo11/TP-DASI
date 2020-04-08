@@ -70,9 +70,9 @@ public class Main {
         try {
             em.getTransaction().begin();
             em.persist(ada);
-            em.persist(wouhou);
+            //em.persist(wouhou);
             em.persist(blaise);
-            em.persist(fred);
+            em.persist(prout);
             em.getTransaction().commit();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service", ex);
