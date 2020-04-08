@@ -57,7 +57,7 @@ public class Main {
         Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
         Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
         Medium wouhou = new Cartomancien("pouf","pif","paf");
-        Personne prout = new Client("prout", "prout", "fred", "fred","066666666",parseDate("2014-02-14"),"lol");
+        Personne prout = new Client("prout", "prout", "fred", "fred","066666666",new Date(),"lol");
         
         
         System.out.println();

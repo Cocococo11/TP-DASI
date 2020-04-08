@@ -7,6 +7,8 @@ package fr.insalyon.dasi.metier.modele;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import javax.persistence.Entity;
 
@@ -18,8 +20,9 @@ import javax.persistence.Entity;
 public class Client extends Personne {
     
     private ProfilAstro profil;
-    Date dateNaissance;
-    List<String> profilAttributs;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateNaissance;
+    private List<String> profilAttributs;
     private String civilite;
     
     public Client(String nom, String prenom, String mail, String motDePasse, String telephone, Date dateNaissance, String civilite) {
