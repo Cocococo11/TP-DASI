@@ -83,6 +83,7 @@ public abstract class Personne implements Serializable {
         this.telephone = telephone;
     }
     
+    
     @Override
     public String toString() {
         return "Personne : id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", motDePasse=" + motDePasse + "Telephone=" + telephone;
