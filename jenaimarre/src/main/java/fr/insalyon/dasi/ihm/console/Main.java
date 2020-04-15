@@ -38,6 +38,9 @@ public class Main {
         //saisirRechercheClient();
 
         JpaUtil.destroy();
+        Client tom = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
+
+        tom.demanderConsultation();
     }
 
     public static void afficherPersonnes(Personne personne) {
