@@ -75,14 +75,7 @@ public class Client extends Personne {
     }
     
     
-    /*
-    * Demander une consultation avec un medium
-    */
-    public void demanderConsultation() {
-        Consultation consultation = new Consultation(new Date());
-        consultation.listerMedium();
-        
-    }
+    
     
     @Override
     public String toString() {

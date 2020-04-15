@@ -5,6 +5,8 @@ import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Client;
+import fr.insalyon.dasi.metier.modele.Consultation;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,6 +73,26 @@ public class Service {
         return resultat;
     }
 
+    /*
+    * Demander une consultation avec un medium
+    */
+    public void demanderConsultation(Client c, int idMedium) {
+        String mailClient=c.getMail();
+        int IdEmploye=0;
+        PersonneDao consul = new PersonneDao();
+        
+        if(true)
+        {
+            Consultation consultation = new Consultation( mailClient,  idMedium,  IdEmploye);
+            consul.conserverConsultation(consultation);
+        
+        }
+        else
+        {
+            // SEND MESSAGE ABOUT FAIL 
+        }
+    }
+    
     public List<Personne> listerPersonnes() {
         List<Personne> resultat = null;
         JpaUtil.creerContextePersistance();

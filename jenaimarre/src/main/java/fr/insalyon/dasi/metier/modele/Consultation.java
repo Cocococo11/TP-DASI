@@ -32,12 +32,18 @@ public class Consultation implements Serializable {
     private Date DateHeureDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DateHeureFin;
+    private String mailClient;
+    private int IdMedium;
+    private int IdEmploye;
 
     protected Consultation() {
     }
     
-    public Consultation(Date DateHeureDemande) {
-        this.DateHeureDemande = DateHeureDemande;
+    public Consultation(String mail, int IdM, int idemp) {
+        this.DateHeureDemande = new Date();
+        this.mailClient = mail;
+        this.IdEmploye = idemp;
+        this.IdMedium = IdM;
         
     }
 

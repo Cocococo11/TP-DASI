@@ -2,6 +2,7 @@ package fr.insalyon.dasi.dao;
 
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.modele.Medium;
+import fr.insalyon.dasi.metier.modele.Consultation;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -15,6 +16,11 @@ public class PersonneDao {
     public void creer(Personne personne) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         em.persist(personne);
+    }
+    
+    public void conserverConsultation(Consultation consultation) {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        em.persist(consultation);
     }
     
     public Personne chercherParId(Long clientId) {

@@ -29,13 +29,14 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        //initialiserPersonnes();            // Question 3
-        testerInscriptionClient();       // Question 4 & 5
-        //testerRechercheClient();         // Question 6
-        //testerListeClients();            // Question 7
-        testerAuthentificationPersonne();  // Question 8
-        //saisirInscriptionClient();       // Question 9
+        //initialiserPersonnes();        
+        testerInscriptionClient();     
+        //testerRechercheClient();       
+        //testerListeClients();           
+        testerAuthentificationPersonne();  
+        //saisirInscriptionClient();      
         //saisirRechercheClient();
+        testerDemandeConsultation();
         
         JpaUtil.destroy();
     }
@@ -317,4 +318,18 @@ public class Main {
 
     }
 */
+    public static void testerDemandeConsultation() {
+        
+        System.out.println();
+        System.out.println("**** testerDemandeConsultation() ****");
+        System.out.println();
+        
+        Service service = new Service();
+        int employeeId = 5;
+        Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
+        service.demanderConsultation(claude, employeeId);
+        
+
+        
+    }
 }
