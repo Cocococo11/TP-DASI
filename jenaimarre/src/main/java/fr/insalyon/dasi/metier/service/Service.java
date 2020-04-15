@@ -3,6 +3,7 @@ package fr.insalyon.dasi.metier.service;
 import fr.insalyon.dasi.dao.PersonneDao;
 import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.metier.modele.Personne;
+import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Consultation;
@@ -10,6 +11,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -76,20 +79,20 @@ public class Service {
     /*
     * Demander une consultation avec un medium
     */
-    public void demanderConsultation(Client c, int idMedium) {
+    public void demanderConsultation(Client c, long idMedium) {
         String mailClient=c.getMail();
-        int IdEmploye=0;
         PersonneDao consul = new PersonneDao();
-        
-        if(true)
+        Employe dispo =  consul.trouverEmployeDispo();
+        if(dispo != null)
         {
-            Consultation consultation = new Consultation( mailClient,  idMedium,  IdEmploye);
+            System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
+            Consultation consultation = new Consultation( mailClient,  idMedium,  dispo.getId());
             consul.conserverConsultation(consultation);
         
         }
         else
         {
-            // SEND MESSAGE ABOUT FAIL 
+            System.out.println("Pas d'employé trouvé");
         }
     }
     

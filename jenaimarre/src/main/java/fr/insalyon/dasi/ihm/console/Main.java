@@ -29,11 +29,11 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        //initialiserPersonnes();        
-        testerInscriptionClient();     
+        initialiserPersonnes();        
+        //testerInscriptionClient();     
         //testerRechercheClient();       
         //testerListeClients();           
-        testerAuthentificationPersonne();  
+        //testerAuthentificationPersonne();  
         //saisirInscriptionClient();      
         //saisirRechercheClient();
         testerDemandeConsultation();
@@ -54,30 +54,31 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Personne ada = new Employe("Lovelace", "Ada", "merci", "test heritage","066666666");
-        Personne blaise = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
+        Employe no1 = new Employe("Lovelace", "Ada", "merci", "test heritage","066666666");
+        Employe no2 = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
+        /*
         Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
         Medium wouhou = new Cartomancien("pouf","pif","paf");
         Medium lu = new Spirite("pouf","pif","boum","ppling");
         Medium lo = new Astrologue("pouf","pif","boum","ppling","Etoiles");
         Personne prout = new Client("prout", "prout", "fred", "fred","066666666",new Date(),"lol");
-        
+        */
         
         System.out.println();
         System.out.println("** Personnes avant persistance: ");
-        afficherPersonnes(ada);
-        afficherPersonnes(blaise);
-        afficherPersonnes(fred);
+        afficherPersonnes(no1);
+        afficherPersonnes(no2);
+        //afficherPersonnes(fred);
         System.out.println();
 
         try {
             em.getTransaction().begin();
-            em.persist(ada);
-            em.persist(wouhou);
-            em.persist(blaise);
+            em.persist(no1);
+            em.persist(no2);
+            /*em.persist(blaise);
             em.persist(lu);
             em.persist(lo);
-            em.persist(prout);
+            em.persist(prout);*/
             em.getTransaction().commit();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service", ex);
@@ -93,9 +94,9 @@ public class Main {
 
         System.out.println();
         System.out.println("** Personnes après persistance: ");
-        afficherPersonnes(ada);
-        afficherPersonnes(blaise);
-        afficherPersonnes(fred);
+        afficherPersonnes(no1);
+        afficherPersonnes(no2);
+        //afficherPersonnes(fred);
         System.out.println();
     }
 
@@ -324,10 +325,10 @@ public class Main {
         System.out.println("**** testerDemandeConsultation() ****");
         System.out.println();
         
-        Service service = new Service();
-        int employeeId = 5;
+        Service service = new Service();  
+        Medium wouhou = new Cartomancien("pouf","pif","paf");
         Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
-        service.demanderConsultation(claude, employeeId);
+        service.demanderConsultation(claude, wouhou.getId());
         
 
         

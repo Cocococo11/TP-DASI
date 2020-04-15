@@ -31,6 +31,14 @@ public abstract class Medium implements Serializable {
     protected Medium() {
         
     }
+
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long Id) {
+        this.Id = Id;
+    }
     
     public Medium(String denomination, String genre, String presentation) {
         this.denomination = denomination;

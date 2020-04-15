@@ -2,6 +2,7 @@ package fr.insalyon.dasi.dao;
 
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.modele.Medium;
+import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.modele.Consultation;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -50,6 +51,13 @@ public class PersonneDao {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         TypedQuery<Medium> query = em.createQuery("SELECT c FROM Medium c ORDER BY  c.denomination ASC", Medium.class);
         return query.getResultList();
+    }
+    
+    public Employe trouverEmployeDispo() {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        TypedQuery<Employe> query = em.createQuery("SELECT c FROM Employe c WHERE c.disponibilite = true", Employe.class);
+        List<Employe> boom= query.getResultList();
+        return boom.get(0);
     }
     
     // modifier / supprimer  ... 
