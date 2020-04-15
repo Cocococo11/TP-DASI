@@ -79,22 +79,8 @@ public class Client extends Personne {
     * Demander une consultation avec un medium
     */
     public void demanderConsultation() {
-        System.out.println();
-        System.out.println("**** Les Mediums ****");
-        System.out.println();
-        
-        Service service = new Service();
-        List<Medium> listeMediums = service.listerMediums();
-        if (listeMediums != null) {
-            for (Medium medium : listeMediums) {
-                System.out.println("-> " + medium);
-            }
-        }
-        else {
-            System.out.println("=> ERREUR...");
-        }
-        
-        long choix = 2;
+        Consultation consultation = new Consultation(new Date());
+        consultation.listerMedium();
         
     }
     
