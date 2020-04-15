@@ -36,13 +36,13 @@ public class PersonneDao {
     
     public List<Personne> listerPersonnes() {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Personne> query = em.createQuery("SELECT c FROM PERSONNE c ORDER BY c.nom ASC, c.prenom ASC", Personne.class);
+        TypedQuery<Personne> query = em.createQuery("SELECT c FROM Personne c ORDER BY c.nom ASC, c.prenom ASC", Personne.class);
         return query.getResultList();
     }
     
     public List<Medium> listerMediums() {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Medium> query = em.createQuery("SELECT c FROM MEDIUM c ORDER BY c.dtype ASC, c.denomination ASC", Medium.class);
+        TypedQuery<Medium> query = em.createQuery("SELECT c FROM Medium c ORDER BY  c.denomination ASC", Medium.class);
         return query.getResultList();
     }
     
