@@ -63,7 +63,7 @@ public class Service {
                 }
             }
         } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service authentifierClient(mail,motDePasse)", ex);
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service authentifierPersonne(mail,motDePasse)", ex);
             resultat = null;
         } finally {
             JpaUtil.fermerContextePersistance();

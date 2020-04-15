@@ -30,19 +30,12 @@ public class Main {
         JpaUtil.init();
 
         //initialiserPersonnes();            // Question 3
-        //testerInscriptionClient();       // Question 4 & 5
+        testerInscriptionClient();       // Question 4 & 5
         //testerRechercheClient();         // Question 6
         //testerListeClients();            // Question 7
-        //testerAuthentificationClient();  // Question 8
+        testerAuthentificationPersonne();  // Question 8
         //saisirInscriptionClient();       // Question 9
         //saisirRechercheClient();
-        Service service = new Service();
-        Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
-        Long idClaude = service.inscrireClient(claude);
-        for(String e : claude.profilAttributs){
-            System.out.println(e);
-        }
-        
         
         JpaUtil.destroy();
     }
@@ -189,8 +182,8 @@ public class Main {
             System.out.println("=> ERREUR...");
         }
     }
-
-    public static void testerAuthentificationClient() {
+*/
+    public static void testerAuthentificationPersonne() {
         
         System.out.println();
         System.out.println("**** testerAuthentificationPersonne() ****");
@@ -201,8 +194,8 @@ public class Main {
         String mail;
         String motDePasse;
 
-        mail = "blaise";
-        motDePasse = "blaise";
+        mail = "tomco@gmail.com";
+        motDePasse = "asdfaf";
         personne = service.authentifierPersonne(mail, motDePasse);
         if (personne != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
@@ -231,7 +224,7 @@ public class Main {
             System.out.println("Authentification échouée avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
         }
     }
-
+/*
     public static void saisirInscriptionClient() {
         Service service = new Service();
 
