@@ -9,6 +9,7 @@ import fr.insalyon.dasi.metier.service.Service;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Temporal;
+import javax.persistence.Embedded;
 import javax.persistence.TemporalType;
 
 import javax.persistence.Entity;
@@ -20,27 +21,37 @@ import javax.persistence.Entity;
 @Entity
 public class Client extends Personne {
     
-    private ProfilAstro profil;
+    @Embedded
+    private ProfilAstro profilAstroClient;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNaissance;
-    private List<String> profilAttributs;
+    public List<String> profilAttributs;
     private String civilite;
     
     public Client(String nom, String prenom, String mail, String motDePasse, String telephone, Date dateNaissance, String civilite) {
         super(nom, prenom, mail, motDePasse, telephone);
         
-        profil = new ProfilAstro();
+        profilAstroClient = new ProfilAstro();
         this.dateNaissance = dateNaissance;
         this.civilite=civilite;
     }
 
-    public ProfilAstro getProfil() {
-        return profil;
+    public ProfilAstro getProfilAstroClient() {
+        return profilAstroClient;
     }
 
-    public void setProfil(ProfilAstro profil) {
-        this.profil = profil;
+    public void setProfilAstroClient(ProfilAstro profilAstroClient) {
+        this.profilAstroClient = profilAstroClient;
     }
+
+    public String getCivilite() {
+        return civilite;
+    }
+
+    public void setCivilite(String civilite) {
+        this.civilite = civilite;
+    }
+
 
     public Date getDateNaissance() {
         return dateNaissance;
@@ -63,17 +74,6 @@ public class Client extends Personne {
         
     }
     
-    /*
-    Affecter la liste avec les valeurs du profil astro
-    */
-    public void definirAttributs() {
-        try {
-            profilAttributs = profil.getProfil(nom, dateNaissance);
-        }
-        catch(Exception e) {
-            System.out.println("/!\\ Erreur d'affectation de la liste des attributs du profil astro !\\");
-        }
-    }
     
     /*
     * Demander une consultation avec un medium

@@ -27,14 +27,16 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import javax.persistence.Embeddable;
 
 /**
  * @version 08/04/20 08:08 GMT-5
  * @author maddie
  */
+@Embeddable
 public class ProfilAstro implements Serializable {
 
-    final static String MA_CLE_ASTRO_API = "B3401-ASTRO-01-M0lGLURBU0ktQVNUUk8tQjAx";
+    final static String MA_CLE_ASTRO_API = "ASTRO-01-M0lGLURBU0ktQVNUUk8tQjAx";
 
     public static final String ENCODING_UTF8 = "UTF-8";
     public static final SimpleDateFormat JSON_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");

@@ -29,18 +29,20 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        initialiserPersonnes();            // Question 3
-        //testerInscriptionPersonnes();       // Question 4 & 5
+        //initialiserPersonnes();            // Question 3
+        //testerInscriptionClient();       // Question 4 & 5
         //testerRechercheClient();         // Question 6
         //testerListeClients();            // Question 7
         //testerAuthentificationClient();  // Question 8
         //saisirInscriptionClient();       // Question 9
         //saisirRechercheClient();
-
-      
-        Client tom = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
-
-        tom.demanderConsultation();
+        Service service = new Service();
+        Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
+        Long idClaude = service.inscrireClient(claude);
+        for(String e : claude.profilAttributs){
+            System.out.println(e);
+        }
+        
         
         JpaUtil.destroy();
     }
@@ -103,15 +105,15 @@ public class Main {
         System.out.println();
     }
 
-    public static void testerInscriptionPersonnes() {
+    public static void testerInscriptionClient() {
         
         System.out.println();
-        System.out.println("**** testerInscriptionPersonnes() ****");
+        System.out.println("**** testerInscriptionClient() ****");
         System.out.println();
         
         Service service = new Service();
-        Personne claude = new Employe("Chappe", "Claude", "claude.chappe@insa-lyon.fr", "HaCKeR","066666666");
-        Long idClaude = service.inscrirePersonne(claude);
+        Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
+        Long idClaude = service.inscrireClient(claude);
         if (idClaude != null) {
             System.out.println("> Succès inscription");
         } else {
@@ -119,25 +121,18 @@ public class Main {
         }
         afficherPersonnes(claude);
 
-        Personne hedy = new Employe("Lamarr", "Hedy", "hlamarr@insa-lyon.fr", "WiFi","066666666");
-        Long idHedy = service.inscrirePersonne(hedy);
-        if (idHedy != null) {
+        Client clode = new Client("COCOCOCO", "Tom", "tomco@gail.com", "asdfaf", "876567899", new Date(), "homme");
+        Long idClode = service.inscrireClient(clode);
+        if (idClode != null) {
             System.out.println("> Succès inscription");
         } else {
             System.out.println("> Échec inscription");
         }
-        afficherPersonnes(hedy);
+        afficherPersonnes(clode);
 
-        Personne hedwig = new Employe("Lamarr", "Hedwig Eva Maria", "hlamarr@insa-lyon.fr", "WiFi","066666666");
-        Long idHedwig = service.inscrirePersonne(hedwig);
-        if (idHedwig != null) {
-            System.out.println("> Succès inscription");
-        } else {
-            System.out.println("> Échec inscription");
-        }
-        afficherPersonnes(hedwig);
+        
     }
-
+/*
     public static void testerRechercheClient() {
         
         System.out.println();
@@ -328,4 +323,5 @@ public class Main {
         System.out.println();
 
     }
+*/
 }

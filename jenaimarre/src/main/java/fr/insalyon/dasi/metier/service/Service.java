@@ -4,6 +4,7 @@ import fr.insalyon.dasi.dao.PersonneDao;
 import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.modele.Medium;
+import fr.insalyon.dasi.metier.modele.Client;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,14 +17,15 @@ public class Service {
 
     protected PersonneDao personneDao = new PersonneDao();
 
-    public Long inscrirePersonne(Personne personne) {
+    public Long inscrireClient(Client client) {
         Long resultat = null;
         JpaUtil.creerContextePersistance();
         try {
             JpaUtil.ouvrirTransaction();
-            personneDao.creer(personne);
+            client.profilAttributs = client.getProfilAstroClient().getProfil(client.getNom(), client.getDateNaissance());
+            personneDao.creer(client);
             JpaUtil.validerTransaction();
-            resultat = personne.getId();
+            resultat = client.getId();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service inscrireClient(client)", ex);
             JpaUtil.annulerTransaction();
