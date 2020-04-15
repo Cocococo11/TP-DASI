@@ -66,7 +66,7 @@ public class Client extends Personne {
     /*
     Affecter la liste avec les valeurs du profil astro
     */
-    private void definirAttributs() {
+    public void definirAttributs() {
         try {
             profilAttributs = profil.getProfil(nom, dateNaissance);
         }

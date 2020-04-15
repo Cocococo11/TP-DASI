@@ -89,7 +89,7 @@ public class Service {
         try {
             resultat = personneDao.listerMediums();
         } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerPersonnes()", ex);
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerMediums()", ex);
             resultat = null;
         } finally {
             JpaUtil.fermerContextePersistance();
