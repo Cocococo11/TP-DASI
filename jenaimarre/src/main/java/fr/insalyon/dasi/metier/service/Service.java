@@ -81,6 +81,7 @@ public class Service {
     */
     public void demanderConsultation(Client c, long idMedium) {
         String mailClient=c.getMail();
+        JpaUtil.creerContextePersistance();
         PersonneDao consul = new PersonneDao();
         Employe dispo =  consul.trouverEmployeDispo();
         if(dispo != null)
@@ -94,6 +95,7 @@ public class Service {
         {
             System.out.println("Pas d'employé trouvé");
         }
+        JpaUtil.fermerContextePersistance();
     }
     
     public List<Personne> listerPersonnes() {

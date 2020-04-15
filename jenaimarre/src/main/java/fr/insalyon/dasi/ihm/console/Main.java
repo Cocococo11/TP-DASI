@@ -328,7 +328,8 @@ public class Main {
         Service service = new Service();  
         Medium wouhou = new Cartomancien("pouf","pif","paf");
         Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
-        service.demanderConsultation(claude, wouhou.getId());
+        service.listerPersonnes();
+        //service.demanderConsultation(claude, wouhou.getId());
         
 
         
