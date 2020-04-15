@@ -55,7 +55,7 @@ public class PersonneDao {
     
     public Employe trouverEmployeDispo() {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Employe> query = em.createQuery("SELECT c FROM Employe c WHERE c.disponibilite = true", Employe.class);
+        TypedQuery<Employe> query = em.createQuery("SELECT c FROM Employe c WHERE c.disponible = true", Employe.class);
         List<Employe> boom= query.getResultList();
         return boom.get(0);
     }

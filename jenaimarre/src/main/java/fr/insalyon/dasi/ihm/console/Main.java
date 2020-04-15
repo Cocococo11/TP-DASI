@@ -54,8 +54,8 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Employe no1 = new Employe("Lovelace", "Ada", "merci", "test heritage","066666666");
-        Employe no2 = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666");
+        Employe no1 = new Employe("Lovelace", "Ada", "merci", "test heritage","066666666", "homme");
+        Employe no2 = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666", "femme");
         /*
         Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
         Medium wouhou = new Cartomancien("pouf","pif","paf");

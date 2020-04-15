@@ -16,7 +16,7 @@ public class Employe extends Personne {
     protected boolean disponible;
     private String genre;
     
-    public Employe(String nom, String prenom, String mail, String motDePasse, String telephone) {
+    public Employe(String nom, String prenom, String mail, String motDePasse, String telephone, String genre) {
         super(nom, prenom, mail, motDePasse, telephone);
         disponible = true;
         this.genre = genre;
