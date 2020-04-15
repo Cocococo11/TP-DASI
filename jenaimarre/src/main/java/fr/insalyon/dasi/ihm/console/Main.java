@@ -9,6 +9,7 @@ import fr.insalyon.dasi.metier.modele.Spirite;
 import fr.insalyon.dasi.metier.modele.Astrologue;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Cartomancien;
+import fr.insalyon.dasi.metier.modele.Consultation;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -329,7 +330,12 @@ public class Main {
         Medium wouhou = new Cartomancien("pouf","pif","paf");
         Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
         service.listerPersonnes();
-        //service.demanderConsultation(claude, wouhou.getId());
+        service.demanderConsultation(claude, wouhou.getId());
+        service.getHistoriqueConsultations(claude);
+        for(Consultation c : claude.getListeConsultations())
+        {
+            System.out.println(" CONSULTATION : "+c);
+        }
         
 
         

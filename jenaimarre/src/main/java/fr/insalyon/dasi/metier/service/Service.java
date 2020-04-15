@@ -40,7 +40,22 @@ public class Service {
         }
         return resultat;
     }
-
+    
+    public void getHistoriqueConsultations(Client c)
+    {
+        JpaUtil.creerContextePersistance();
+        PersonneDao personneDao = new PersonneDao();
+        List<Consultation> liste = null;
+        try {
+            liste = personneDao.recupererConsultations(c.getMail());
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service getHistoriqueConsultations(mail)", ex);
+            liste = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        c.setListeConsultations(liste);
+    }
     public Personne rechercherClientParId(Long id) {
         Personne resultat = null;
         JpaUtil.creerContextePersistance();
@@ -80,15 +95,15 @@ public class Service {
     * Demander une consultation avec un medium
     */
     public void demanderConsultation(Client c, long idMedium) {
-        String mailClient=c.getMail();
         JpaUtil.creerContextePersistance();
         PersonneDao consul = new PersonneDao();
         Employe dispo =  consul.trouverEmployeDispo();
         if(dispo != null)
         {
             System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
-            Consultation consultation = new Consultation( mailClient,  idMedium,  dispo.getId());
+            Consultation consultation = new Consultation(   idMedium,  dispo.getId(),c);
             consul.conserverConsultation(consultation);
+            dispo.setDisponible(false);
         
         }
         else

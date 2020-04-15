@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -32,16 +33,18 @@ public class Consultation implements Serializable {
     private Date DateHeureDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DateHeureFin;
-    private String mailClient;
+    @ManyToOne
+    private Client client;
     private long IdMedium;
     private long IdEmploye;
+    private String mailClient = client.getMail();
 
     protected Consultation() {
     }
     
-    public Consultation(String mail, long IdM, long idemp) {
+    public Consultation( long IdM, long idemp, Client client) {
         this.DateHeureDemande = new Date();
-        this.mailClient = mail;
+        this.client = client;
         this.IdEmploye = idemp;
         this.IdMedium = IdM;
         

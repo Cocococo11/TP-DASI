@@ -13,6 +13,7 @@ import javax.persistence.Embedded;
 import javax.persistence.TemporalType;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  * @version 08/04/20 19:00 GMT-5
@@ -26,6 +27,8 @@ public class Client extends Personne {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNaissance;
     public List<String> profilAttributs;
+    @OneToMany(mappedBy="client")
+    private List<Consultation> listeConsultations;
     private String civilite;
     
     public Client(String nom, String prenom, String mail, String motDePasse, String telephone, Date dateNaissance, String civilite) {
@@ -34,6 +37,14 @@ public class Client extends Personne {
         profilAstroClient = new ProfilAstro();
         this.dateNaissance = dateNaissance;
         this.civilite=civilite;
+    }
+
+    public List<Consultation> getListeConsultations() {
+        return listeConsultations;
+    }
+
+    public void setListeConsultations(List<Consultation> listeConsultations) {
+        this.listeConsultations = listeConsultations;
     }
 
     public ProfilAstro getProfilAstroClient() {

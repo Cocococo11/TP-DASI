@@ -61,5 +61,12 @@ public class PersonneDao {
         return boom.get(0);
     }
     
+    public List<Consultation> recupererConsultations(String mail)
+    {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE c.mailClient=:mail", Consultation.class);
+        query.setParameter("mail", mail);
+        return query.getResultList();
+    }
     // modifier / supprimer  ... 
 }
