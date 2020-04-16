@@ -36,6 +36,7 @@ public class Consultation implements Serializable {
     @ManyToOne
     private Client client;
     private long IdMedium;
+    private String etat= null;
     private long IdEmploye;
     private String mailClient = client.getMail();
 
@@ -53,6 +54,46 @@ public class Consultation implements Serializable {
     @Override
     public String toString() {
         return "Consultation{" + "Commentaire=" + Commentaire + ", DateHeureDemande=" + DateHeureDemande + ", DateHeureDebut=" + DateHeureDebut + ", DateHeureFin=" + DateHeureFin + '}';
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public long getIdMedium() {
+        return IdMedium;
+    }
+
+    public void setIdMedium(long IdMedium) {
+        this.IdMedium = IdMedium;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public long getIdEmploye() {
+        return IdEmploye;
+    }
+
+    public void setIdEmploye(long IdEmploye) {
+        this.IdEmploye = IdEmploye;
+    }
+
+    public String getMailClient() {
+        return mailClient;
+    }
+
+    public void setMailClient(String mailClient) {
+        this.mailClient = mailClient;
     }
 
     public Long getId() {

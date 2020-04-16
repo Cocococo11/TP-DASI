@@ -141,18 +141,20 @@ public class Service {
         return resultat;
     }
     
-    public void debuterConsultation(int idConsultation){
+    public void debuterConsultation(Consultation consultation){
         JpaUtil.creerContextePersistance();
         PersonneDao p = new PersonneDao();
-        p.modifierConsultation(idConsultation, "en cours");
+        consultation.setEtat("en cours");
+        p.modifierConsultation(consultation);
         JpaUtil.fermerContextePersistance();
         
     }
     
-    public void terminerConsultation(int idConsultation){
+    public void terminerConsultation(Consultation consultation){
         JpaUtil.creerContextePersistance();
         PersonneDao p = new PersonneDao();
-        p.modifierConsultation(idConsultation,"finie");
+        consultation.setEtat("finie");
+        p.modifierConsultation(consultation);
         JpaUtil.fermerContextePersistance();
     }
 
