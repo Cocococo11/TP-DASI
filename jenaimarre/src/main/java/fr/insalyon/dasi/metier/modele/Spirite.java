@@ -8,7 +8,7 @@ package fr.insalyon.dasi.metier.modele;
 import javax.persistence.Entity;
 /**
  * @version 01/04/20 13:05
- * @author 
+ * @author Madeleine Comtois & Corentin Bel
  */
 @Entity
 public class Spirite extends Medium {

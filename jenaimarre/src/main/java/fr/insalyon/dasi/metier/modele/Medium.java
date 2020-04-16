@@ -16,7 +16,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Corentin ☺
+ * @author Madeleine Comtois & Corentin Bel
  */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

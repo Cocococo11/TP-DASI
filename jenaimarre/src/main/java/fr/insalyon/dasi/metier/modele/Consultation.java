@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
 
 /**
  * @version 15/04/20 GMT-5 09:34
- * @author Comtois
+ * @author Madeleine Comtois & Corentin Bel
  */
 @Entity
 public class Consultation implements Serializable {

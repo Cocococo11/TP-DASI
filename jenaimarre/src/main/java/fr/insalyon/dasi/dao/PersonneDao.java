@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author DASI Team
+ * @author Madeleine Comtois & Corentin Bel
  */
 public class PersonneDao {
     

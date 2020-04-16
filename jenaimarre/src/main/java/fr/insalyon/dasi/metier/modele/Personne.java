@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 /**
  * @version 08/04/20 19:00 GMT-5
- * @author DASI Team
+ * @author Madeleine Comtois & Corentin Bel
  */
 // abstract
 @Entity

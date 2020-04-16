@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 
 /**
  * @version 08/04/20 19:00 GMT-5
- * @author 
+ * @author Madeleine Comtois & Corentin Bel
  */
 @Entity
 public class Client extends Personne {

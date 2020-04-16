@@ -31,7 +31,7 @@ import javax.persistence.Embeddable;
 
 /**
  * @version 08/04/20 08:08 GMT-5
- * @author maddie
+ * @author Madeleine Comtois & Corentin Bel
  */
 @Embeddable
 public class ProfilAstro implements Serializable {
