@@ -140,5 +140,20 @@ public class Service {
         }
         return resultat;
     }
+    
+    public void debuterConsultation(int idConsultation){
+        JpaUtil.creerContextePersistance();
+        PersonneDao p = new PersonneDao();
+        p.modifierConsultation(idConsultation, "en cours");
+        JpaUtil.fermerContextePersistance();
+        
+    }
+    
+    public void terminerConsultation(int idConsultation){
+        JpaUtil.creerContextePersistance();
+        PersonneDao p = new PersonneDao();
+        p.modifierConsultation(idConsultation,"finie");
+        JpaUtil.fermerContextePersistance();
+    }
 
 }

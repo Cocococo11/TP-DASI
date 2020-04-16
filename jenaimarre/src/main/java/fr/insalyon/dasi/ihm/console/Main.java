@@ -37,13 +37,31 @@ public class Main {
         //testerAuthentificationPersonne();  
         //saisirInscriptionClient();      
         //saisirRechercheClient();
-        testerDemandeConsultation();
+        //testerDemandeConsultation();
         
         JpaUtil.destroy();
     }
 
     public static void afficherPersonnes(Personne personne) {
         System.out.println("-> " + personne);
+    }
+    
+    public static void afficherMediums() {
+        System.out.println();
+        System.out.println("**** Les Mediums ****");
+        System.out.println();
+        
+        Service service = new Service();
+        List<Medium> listeMediums = service.listerMediums();
+        if (listeMediums != null) {
+            for (Medium medium : listeMediums) {
+                System.out.println("-> " + medium);
+            }
+        }
+        else {
+            System.out.println("=> ERREUR...");
+        }
+
     }
 
     public static void initialiserPersonnes() {
@@ -55,31 +73,23 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
         EntityManager em = emf.createEntityManager();
 
-        Employe no1 = new Employe("Lovelace", "Ada", "merci", "test heritage","066666666", "homme");
-        Employe no2 = new Employe("Pascal", "Blaise", "blaise", "blaise","066666666", "femme");
-        /*
-        Personne fred = new Employe("Fotiadu", "Frédéric", "fred", "fred","066666666");
-        Medium wouhou = new Cartomancien("pouf","pif","paf");
-        Medium lu = new Spirite("pouf","pif","boum","ppling");
-        Medium lo = new Astrologue("pouf","pif","boum","ppling","Etoiles");
-        Personne prout = new Client("prout", "prout", "fred", "fred","066666666",new Date(),"lol");
-        */
+        Employe no1 = new Employe("Michel", "Blanc", "m@b.com", "123","066666666", "homme");
+        Employe no2 = new Employe("Pascale", "Braise", "p@b.com", "123","066666666", "femme");
+        Medium riri = new Cartomancien("pouf","pif","paf");
+        Medium fifi = new Spirite("pouf","pif","boum","ppling");
+        Medium loulou = new Astrologue("pouf","pif","boum","ppling","Etoiles");
+        Client idiot = new Client("Jesuis", "Pasmart", "j@p.com", "123","066666666",new Date(),"Dr");
         
-        System.out.println();
-        System.out.println("** Personnes avant persistance: ");
-        afficherPersonnes(no1);
-        afficherPersonnes(no2);
-        //afficherPersonnes(fred);
         System.out.println();
 
         try {
             em.getTransaction().begin();
             em.persist(no1);
             em.persist(no2);
-            /*em.persist(blaise);
-            em.persist(lu);
-            em.persist(lo);
-            em.persist(prout);*/
+            em.persist(riri);
+            em.persist(fifi);
+            em.persist(loulou);
+            em.persist(idiot);
             em.getTransaction().commit();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service", ex);
@@ -97,7 +107,8 @@ public class Main {
         System.out.println("** Personnes après persistance: ");
         afficherPersonnes(no1);
         afficherPersonnes(no2);
-        //afficherPersonnes(fred);
+        afficherPersonnes(idiot);
+        afficherMediums();
         System.out.println();
     }
 

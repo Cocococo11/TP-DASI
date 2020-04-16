@@ -19,6 +19,13 @@ public class PersonneDao {
         em.persist(personne);
     }
     
+    public void modifierConsultation(int idc,String comment ){
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        TypedQuery<Personne> query = em.createQuery("SELECT p FROM Consultation p WHERE p.Id  = :id", Personne.class);
+        query.setParameter("id", idc);
+        query.getResultList();
+    }
+    
     public void conserverConsultation(Consultation consultation) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         em.persist(consultation);
