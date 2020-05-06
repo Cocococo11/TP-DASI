@@ -37,7 +37,7 @@ public class Main {
         testerAuthentificationPersonne();  
         //saisirInscriptionClient();      
         //saisirRechercheClient();
-        testerDemandeConsultation();
+        //testerDemandeConsultation();
         
         JpaUtil.destroy();
     }
@@ -208,8 +208,8 @@ public class Main {
         String mail;
         String motDePasse;
 
-        mail = "tomco@gmail.com";
-        motDePasse = "asdfaf";
+        mail = "j@p.com";
+        motDePasse = "123";
         personne = service.authentifierPersonne(mail, motDePasse);
         if (personne != null) {
             System.out.println("Authentification réussie avec le mail '" + mail + "' et le mot de passe '" + motDePasse + "'");
