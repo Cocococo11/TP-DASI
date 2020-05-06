@@ -19,7 +19,7 @@ public class ProfilClientSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Personne client = (Personne)request.getAttribute("client");
+        Personne client = (Personne)request.getAttribute("personne");
         
         JsonObject container = new JsonObject();
 
@@ -27,13 +27,13 @@ public class ProfilClientSerialisation extends Serialisation {
         container.addProperty("connexion", connexion);
 
         if (client != null) {
-            JsonObject jsonClient = new JsonObject();
-            jsonClient.addProperty("id", client.getId());
-            jsonClient.addProperty("nom", client.getNom());
-            jsonClient.addProperty("prenom", client.getPrenom());
-            jsonClient.addProperty("mail", client.getMail());
+            JsonObject jsonPersonne = new JsonObject();
+            jsonPersonne.addProperty("id", client.getId());
+            jsonPersonne.addProperty("nom", client.getNom());
+            jsonPersonne.addProperty("prenom", client.getPrenom());
+            jsonPersonne.addProperty("mail", client.getMail());
 
-            container.add("client", jsonClient);
+            container.add("personne", jsonPersonne);
         }
 
         response.setContentType("application/json;charset=UTF-8");

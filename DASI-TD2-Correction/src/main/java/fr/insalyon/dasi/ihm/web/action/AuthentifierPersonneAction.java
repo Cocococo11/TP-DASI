@@ -15,21 +15,21 @@ public class AuthentifierPersonneAction extends Action {
     @Override
     public void executer(HttpServletRequest request) {
         
-        String login = request.getParameter("login");
+        String Mail = request.getParameter("Mail");
         String password = request.getParameter("password");
 
         Service service = new Service();
-        Personne personne = service.authentifierPersonne(login, password);
+        Personne personne = service.authentifierPersonne(Mail, password);
 
         request.setAttribute("personne", personne);
         
         // Gestion de la Session: ici, enregistrer l'ID du Client authentifié
         HttpSession session = request.getSession();
         if (personne != null) {
-            session.setAttribute("idPersonne", personne.getId());
+            session.setAttribute("mailPersonne", personne.getMail());
         }
         else {
-            session.removeAttribute("idPersonne");
+            session.removeAttribute("mailPersonne");
         }
     }
     
