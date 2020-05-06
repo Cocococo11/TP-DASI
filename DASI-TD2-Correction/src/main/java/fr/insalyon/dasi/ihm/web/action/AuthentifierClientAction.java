@@ -1,6 +1,7 @@
 package fr.insalyon.dasi.ihm.web.action;
 
 import fr.insalyon.dasi.metier.modele.Client;
+import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,7 +19,7 @@ public class AuthentifierClientAction extends Action {
         String password = request.getParameter("password");
 
         Service service = new Service();
-        Client client = service.authentifierClient(login, password);
+        Personne client = service.authentifierPersonne(login, password);
 
         request.setAttribute("client", client);
         
