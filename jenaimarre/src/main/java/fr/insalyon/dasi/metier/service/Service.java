@@ -47,7 +47,7 @@ public class Service {
         PersonneDao personneDao = new PersonneDao();
         List<Consultation> liste = null;
         try {
-            liste = personneDao.recupererConsultations(c.getMail());
+            liste = personneDao.recupererConsultations(c);
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service getHistoriqueConsultations(mail)", ex);
             liste = null;

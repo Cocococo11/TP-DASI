@@ -1,5 +1,6 @@
 package fr.insalyon.dasi.dao;
 
+import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Employe;
@@ -66,11 +67,11 @@ public class PersonneDao {
         return boom.get(0);
     }
     
-    public List<Consultation> recupererConsultations(String mail)
+    public List<Consultation> recupererConsultations(Client client)
     {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE c.mailClient=:mail", Consultation.class);
-        query.setParameter("mail", mail);
+        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE c.client=:client", Consultation.class);
+        query.setParameter("client", client);
         return query.getResultList();
     }
     // modifier / supprimer  ... 

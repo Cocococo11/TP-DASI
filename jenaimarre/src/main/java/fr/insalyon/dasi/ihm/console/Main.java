@@ -30,14 +30,14 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        //initialiserPersonnes();        
+        initialiserPersonnes();        
         //testerInscriptionClient();     
         //testerRechercheClient();       
         //testerListeClients();           
         //testerAuthentificationPersonne();  
         //saisirInscriptionClient();      
         //saisirRechercheClient();
-        //testerDemandeConsultation();
+        testerDemandeConsultation();
         
         JpaUtil.destroy();
     }
