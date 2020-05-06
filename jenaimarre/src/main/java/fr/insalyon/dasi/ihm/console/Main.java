@@ -34,7 +34,7 @@ public class Main {
         //testerInscriptionClient();     
         //testerRechercheClient();       
         //testerListeClients();           
-        //testerAuthentificationPersonne();  
+        testerAuthentificationPersonne();  
         //saisirInscriptionClient();      
         //saisirRechercheClient();
         testerDemandeConsultation();
