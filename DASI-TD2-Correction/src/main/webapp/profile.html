@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Votre profil client</title>
+        <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </head>
+    <body>
+
+        <h1>Votre profil -  </h1>
+        
+        <h2>Vos informations </h2>
+        
+        Prénom: <input type="text" id="champ-prenom" size="40" />
+        Nom: <input type="text" id="champ-nom" size="40" />
+        Email: <input type="text" id="champ-email" size="40" />
+        Téléphone: <input type="text" id="champ-telephone" size="40" />
+        
+        <button id="bouton-enregistrer">Enregistrer les modifications</button>
+        
+        <h2>Votre profil astral </h2>
+        
+        <h2>Votre historique de consultations </h2>
+
+        <input type="button" name="bouton-consultation" value="Consulter un medium" onclick="self.location.href='consultation.html'"> 
+        
+        <input type="button" name="deconnexion" value="Se déconnecter" onclick="self.location.href='login.html'"> 
+        
+
+        <script>
+            $(document).ready( function () {
+                //fill the informations and the astral profile and consultations history
+            });
+            
+        </script>
+    </body>
+</html>

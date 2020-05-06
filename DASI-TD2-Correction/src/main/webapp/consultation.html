@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Consultation</title>
+        <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </head>
+    <body>
+
+        <h1>Consulter un medium </h1>
+        
+        <h2>Les médiums:</h2>
+        <button id="bouton-afficher">Afficher la liste des médiums</button>
+        
+        
+        <p id="notification">Pas de consultation choisie</p>
+
+        <button id="bouton-consulter">Consulter maintenant</button>
+        
+        <input type="button" name="deconnexion" value="Se déconnecter" onclick="self.location.href='login.html'"> 
+        
+
+        <script>
+            $(document).ready( function () {
+                $('#bouton-consulter').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                    console.log("clic sur le bouton de consultation"); // LOG dans Console Javascript
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'creer-consultation',
+                            
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        if (response.consultation) {
+                            $('#notification').html("Consultation acceptée, veuillez vérifier vos mails");  // Message pour le paragraphe de notification
+                            var consultation = response.consultation;
+                        }
+                        else {
+                            $('#notification').html("Erreur de consultation"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                });
+                $('#bouton-afficher').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                    console.log("clic sur le bouton d'affichage mediums"); // LOG dans Console Javascript
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'GET',
+                        data: {
+                            todo: 'recupererListeMediums'
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        if (response.consultation) {
+                            $('#notification').html("La liste des médiums vivant");  // Message pour le paragraphe de notification
+                            var mediums = response.listeMediums;
+                            //afficher la liste des médiums dans un tableau ou liste
+                        }
+                        else {
+                            $('#notification').html("Erreur de médium"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                });
+            });
+            
+        </script>
+    </body>
+</html>

@@ -1,6 +1,5 @@
 package fr.insalyon.dasi.ihm.web.action;
 
-import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +26,10 @@ public class AuthentifierPersonneAction extends Action {
         // Gestion de la Session: ici, enregistrer le mail de la personne authentifiée
         HttpSession session = request.getSession();
         if (personne != null) {
-            session.setAttribute("mailPersonne", personne.getMail());
+            session.setAttribute("prenomPersonne", personne.getPrenom());
         }
         else {
-            session.removeAttribute("mailPersonne");
+            session.removeAttribute("prenomPersonne");
         }
     }
     
