@@ -94,14 +94,14 @@ public class Service {
     /*
     * Demander une consultation avec un medium
     */
-    public void demanderConsultation(Client c, long idMedium) {
+    public void demanderConsultation(Client c, Medium medium) {
         JpaUtil.creerContextePersistance();
         PersonneDao consul = new PersonneDao();
         Employe dispo =  consul.trouverEmployeDispo();
         if(dispo != null)
         {
             System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
-            Consultation consultation = new Consultation(c);
+            Consultation consultation = new Consultation(c, dispo, medium);
             consul.conserverConsultation(consultation);
             dispo.setDisponible(false);
         

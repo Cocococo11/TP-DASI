@@ -6,6 +6,7 @@
 package fr.insalyon.dasi.metier.modele;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -27,9 +29,19 @@ public abstract class Medium implements Serializable {
     protected String denomination;
     protected String genre;
     protected String presentation;
+    @OneToMany(mappedBy="medium")
+    private List<Consultation> listeConsultations;
     
     protected Medium() {
         
+    }
+
+    public List<Consultation> getListeConsultations() {
+        return listeConsultations;
+    }
+
+    public void setListeConsultations(List<Consultation> listeConsultations) {
+        this.listeConsultations = listeConsultations;
     }
 
     public long getId() {
