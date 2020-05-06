@@ -20,10 +20,10 @@ public class AuthentifierPersonneAction extends Action {
 
         Service service = new Service();
         Personne personne = service.authentifierPersonne(Mail, password);
-
+        //System.out.println("Personne numéro :" + personne.getTelephone());
         request.setAttribute("personne", personne);
         
-        // Gestion de la Session: ici, enregistrer l'ID du Client authentifié
+        // Gestion de la Session: ici, enregistrer le mail de la personne authentifiée
         HttpSession session = request.getSession();
         if (personne != null) {
             session.setAttribute("mailPersonne", personne.getMail());

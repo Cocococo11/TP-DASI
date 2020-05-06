@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>DASI-TP</artifactId>
+            <artifactId>PROJET-DASI</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>

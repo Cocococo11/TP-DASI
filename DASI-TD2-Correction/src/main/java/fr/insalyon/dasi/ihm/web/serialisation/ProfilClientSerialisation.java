@@ -12,26 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author DASI Team
+ * @author B3401
  */
 public class ProfilClientSerialisation extends Serialisation {
 
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Personne client = (Personne)request.getAttribute("personne");
+        Personne personne = (Personne)request.getAttribute("personne");
         
         JsonObject container = new JsonObject();
 
-        Boolean connexion = (client != null);
+        Boolean connexion = (personne != null);
         container.addProperty("connexion", connexion);
 
-        if (client != null) {
+        if (personne != null) {
             JsonObject jsonPersonne = new JsonObject();
-            jsonPersonne.addProperty("id", client.getId());
-            jsonPersonne.addProperty("nom", client.getNom());
-            jsonPersonne.addProperty("prenom", client.getPrenom());
-            jsonPersonne.addProperty("mail", client.getMail());
+            jsonPersonne.addProperty("id", personne.getId());
+            jsonPersonne.addProperty("nom", personne.getNom());
+            jsonPersonne.addProperty("prenom", personne.getPrenom());
+            jsonPersonne.addProperty("mail", personne.getMail());
 
             container.add("personne", jsonPersonne);
         }
