@@ -30,7 +30,7 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        initialiserPersonnes();        
+        //initialiserPersonnes();        
         //testerInscriptionClient();     
         //testerRechercheClient();       
         //testerListeClients();           
@@ -78,7 +78,7 @@ public class Main {
         Medium riri = new Cartomancien("pouf","pif","paf");
         Medium fifi = new Spirite("pouf","pif","boum","ppling");
         Medium loulou = new Astrologue("pouf","pif","boum","ppling","Etoiles");
-        //Client idiot = new Client("Jesuis", "Pasmart", "j@p.com", "123","066666666",new Date(),"Dr");
+        Client idiot = new Client("Jesuis", "Pasmart", "j@p.com", "123","066666666",new Date(),"Dr");
         
         System.out.println();
 
@@ -89,7 +89,7 @@ public class Main {
             em.persist(riri);
             em.persist(fifi);
             em.persist(loulou);
-            //em.persist(idiot);
+            em.persist(idiot);
             em.getTransaction().commit();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service", ex);
@@ -107,7 +107,7 @@ public class Main {
         System.out.println("** Personnes après persistance: ");
         afficherPersonnes(no1);
         afficherPersonnes(no2);
-        //afficherPersonnes(idiot);
+        afficherPersonnes(idiot);
         afficherMediums();
         System.out.println();
     }

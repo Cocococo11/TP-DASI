@@ -24,7 +24,7 @@ public class Client extends Personne {
     
     @Embedded
     private ProfilAstro profilAstroClient;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     public List<String> profilAttributs;
     @OneToMany(mappedBy="client")

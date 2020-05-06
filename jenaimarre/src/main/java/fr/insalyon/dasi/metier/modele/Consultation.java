@@ -5,10 +5,8 @@
  */
 package fr.insalyon.dasi.metier.modele;
 
-import fr.insalyon.dasi.metier.service.Service;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,18 +25,15 @@ public class Consultation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     private String Commentaire;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date DateHeureDemande;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date DateHeureDebut;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date DateHeureFin;
     @ManyToOne
     private Client client;
-    private long IdMedium;
     private String etat= null;
-    private long IdEmploye;
-    private String mailClient = client.getMail();
 
     protected Consultation() {
     }
@@ -46,8 +41,8 @@ public class Consultation implements Serializable {
     public Consultation( long IdM, long idemp, Client client) {
         this.DateHeureDemande = new Date();
         this.client = client;
-        this.IdEmploye = idemp;
-        this.IdMedium = IdM;
+        //this.IdEmploye = idemp;
+        //this.IdMedium = IdM;
         
     }
 
@@ -64,13 +59,6 @@ public class Consultation implements Serializable {
         this.client = client;
     }
 
-    public long getIdMedium() {
-        return IdMedium;
-    }
-
-    public void setIdMedium(long IdMedium) {
-        this.IdMedium = IdMedium;
-    }
 
     public String getEtat() {
         return etat;
@@ -78,22 +66,6 @@ public class Consultation implements Serializable {
 
     public void setEtat(String etat) {
         this.etat = etat;
-    }
-
-    public long getIdEmploye() {
-        return IdEmploye;
-    }
-
-    public void setIdEmploye(long IdEmploye) {
-        this.IdEmploye = IdEmploye;
-    }
-
-    public String getMailClient() {
-        return mailClient;
-    }
-
-    public void setMailClient(String mailClient) {
-        this.mailClient = mailClient;
     }
 
     public Long getId() {
