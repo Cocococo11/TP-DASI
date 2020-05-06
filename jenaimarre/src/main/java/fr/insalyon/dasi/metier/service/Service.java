@@ -101,7 +101,7 @@ public class Service {
         if(dispo != null)
         {
             System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
-            Consultation consultation = new Consultation(   idMedium,  dispo.getId(),c);
+            Consultation consultation = new Consultation(c);
             consul.conserverConsultation(consultation);
             dispo.setDisponible(false);
         

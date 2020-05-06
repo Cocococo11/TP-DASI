@@ -38,12 +38,9 @@ public class Consultation implements Serializable {
     protected Consultation() {
     }
     
-    public Consultation( long IdM, long idemp, Client client) {
+    public Consultation(Client client) {
         this.DateHeureDemande = new Date();
         this.client = client;
-        //this.IdEmploye = idemp;
-        //this.IdMedium = IdM;
-        
     }
 
     @Override
