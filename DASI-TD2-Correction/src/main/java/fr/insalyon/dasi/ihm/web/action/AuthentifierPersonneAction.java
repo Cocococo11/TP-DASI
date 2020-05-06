@@ -20,7 +20,8 @@ public class AuthentifierPersonneAction extends Action {
 
         Service service = new Service();
         Personne personne = service.authentifierPersonne(Mail, password);
-        //System.out.println("Personne numéro :" + personne.getTelephone());
+        
+        System.out.println(personne);
         request.setAttribute("personne", personne);
         
         // Gestion de la Session: ici, enregistrer le mail de la personne authentifiée

@@ -48,7 +48,7 @@
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
                         if (response.connexion) {
-                            //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                            $('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
                             // TODO: afficher les informations de la personne dans la notification
                             // Exemple: Connexion de Ada Lovelace (ID 1)
                             var personne = response.Personne;
