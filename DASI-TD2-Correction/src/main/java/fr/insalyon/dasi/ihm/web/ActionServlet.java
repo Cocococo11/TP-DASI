@@ -2,7 +2,7 @@ package fr.insalyon.dasi.ihm.web;
 
 import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.ihm.web.action.Action;
-import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
+import fr.insalyon.dasi.ihm.web.action.AuthentifierPersonneAction;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class ActionServlet extends HttpServlet {
         if (todo != null) {
             switch (todo) {
                 case "connecter":
-                    action = new AuthentifierClientAction();
+                    action = new AuthentifierPersonneAction();
                     serialisation = new ProfilClientSerialisation();
                     break;
                 case "...":

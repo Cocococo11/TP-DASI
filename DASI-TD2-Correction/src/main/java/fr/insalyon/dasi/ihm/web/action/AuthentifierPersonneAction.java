@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author DASI Team
  */
-public class AuthentifierClientAction extends Action {
+public class AuthentifierPersonneAction extends Action {
 
     @Override
     public void executer(HttpServletRequest request) {
@@ -19,17 +19,17 @@ public class AuthentifierClientAction extends Action {
         String password = request.getParameter("password");
 
         Service service = new Service();
-        Personne client = service.authentifierPersonne(login, password);
+        Personne personne = service.authentifierPersonne(login, password);
 
-        request.setAttribute("client", client);
+        request.setAttribute("personne", personne);
         
         // Gestion de la Session: ici, enregistrer l'ID du Client authentifié
         HttpSession session = request.getSession();
-        if (client != null) {
-            session.setAttribute("idClient", client.getId());
+        if (personne != null) {
+            session.setAttribute("idPersonne", personne.getId());
         }
         else {
-            session.removeAttribute("idClient");
+            session.removeAttribute("idPersonne");
         }
     }
     
