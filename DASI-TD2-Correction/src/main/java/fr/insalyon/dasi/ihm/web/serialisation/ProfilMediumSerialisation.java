@@ -7,6 +7,7 @@ import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Personne;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,15 +21,16 @@ public class ProfilMediumSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 // Il va falloir séraliser un medium en renvoyant chacun de ses attributs en json pour les afficher en html
 
-        Medium medium = (Medium)request.getAttribute("medium");
+        List<Medium> liste = (List<Medium>)request.getAttribute("listeMediums");
         JsonObject container = new JsonObject();
         
-        JsonObject jsonPersonne = new JsonObject();
-        jsonPersonne.addProperty("id", medium.getId());
-        jsonPersonne.addProperty("genre", medium.getGenre());
-        jsonPersonne.addProperty("denomination", medium.getDenomination());
-        jsonPersonne.addProperty("presentation", medium.getPresentation());
-
+        JsonObject jsonMedium = new JsonObject();
+        /*
+        jsonMedium.addProperty("id", medium.getId());
+        jsonMedium.addProperty("genre", medium.getGenre());
+        jsonMedium.addProperty("denomination", medium.getDenomination());
+        jsonMedium.addProperty("presentation", medium.getPresentation());
+*/
 
 
         response.setContentType("application/json;charset=UTF-8");
