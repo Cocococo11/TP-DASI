@@ -68,10 +68,15 @@
                     })
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
-                        if (response.consultation) {
+                        if (response.connexion) {
                             $('#notification').html("La liste des médiums vivant");  // Message pour le paragraphe de notification
-                            var mediums = response.listeMediums;
+                            var mediums = response.values();
+                            var liste = "";
+                            for(var i = 0; i < mediums.length; i++) {
+                                liste += mediums[i];
+                            }
                             //afficher la liste des médiums dans un tableau ou liste
+                            $('#notification').html(liste);
                         }
                         else {
                             $('#notification').html("Erreur de médium"); // Message pour le paragraphe de notification

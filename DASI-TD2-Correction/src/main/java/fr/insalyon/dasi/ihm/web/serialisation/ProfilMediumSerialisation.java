@@ -7,7 +7,7 @@ import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Personne;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,17 +21,27 @@ public class ProfilMediumSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 // Il va falloir séraliser un medium en renvoyant chacun de ses attributs en json pour les afficher en html
 
-        List<Medium> liste = (List<Medium>)request.getAttribute("listeMediums");
+        ArrayList<Medium> mediums = (ArrayList<Medium>)request.getAttribute("listeMediums");
+        
         JsonObject container = new JsonObject();
         
-        JsonObject jsonMedium = new JsonObject();
-        /*
-        jsonMedium.addProperty("id", medium.getId());
-        jsonMedium.addProperty("genre", medium.getGenre());
-        jsonMedium.addProperty("denomination", medium.getDenomination());
-        jsonMedium.addProperty("presentation", medium.getPresentation());
-*/
-
+        Boolean connexion = (mediums != null);
+        container.addProperty("connexion", connexion);
+        
+        if (mediums != null) {
+            for(Medium m : mediums) {
+                JsonObject jsonMedium = new JsonObject();
+                
+                jsonMedium.addProperty("id", m.getId());
+                jsonMedium.addProperty("genre", m.getGenre());
+                jsonMedium.addProperty("denomination", m.getDenomination());
+                jsonMedium.addProperty("presentation", m.getPresentation());
+                
+                container.add("listeMediums", jsonMedium);
+            }
+            
+        }
+        
 
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
