@@ -24,12 +24,13 @@ public class ProfilMediumSerialisation extends Serialisation {
 
         List<Medium> mediums = (List<Medium>)request.getAttribute("listeMediums");
         
-        JsonObject container = new JsonObject();
+        JsonObject container = new JsonObject();     
         
         Boolean connexion = (mediums != null);
         container.addProperty("connexion", connexion);
         
         if (mediums != null) {
+            int i=0;
             for(Medium m : mediums) {
                 JsonObject jsonMedium = new JsonObject();
                 
@@ -37,10 +38,9 @@ public class ProfilMediumSerialisation extends Serialisation {
                 jsonMedium.addProperty("genre", m.getGenre());
                 jsonMedium.addProperty("denomination", m.getDenomination());
                 jsonMedium.addProperty("presentation", m.getPresentation());
-                
-                container.add("listeMediums", jsonMedium);
+                ++i;
+                container.add("listeMediums"+i, jsonMedium);
             }
-            
         }
         
 
