@@ -25,4 +25,11 @@ public class Astrologue extends Medium {
     
     protected Astrologue() {
     }
+
+    @Override
+    public String toString() {
+        return "Astrologue{ denomination=" + this.getDenomination() + ", genre=" + this.getGenre() + ", presentation=" + this.getPresentation() + "promotion=" + promotion + ", formation=" + formation + "}";
+    }
+    
+    
 }

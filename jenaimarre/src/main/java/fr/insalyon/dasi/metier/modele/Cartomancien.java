@@ -19,8 +19,10 @@ public class Cartomancien extends Medium {
 
     @Override
     public String toString() {
-        return "Cartomancien{" + '}';
+        return "Cartomancien{ denomination=" + this.getDenomination() + ", genre=" + this.getGenre() + ", presentation=" + this.getPresentation() + "}";
     }
+
+    
     
 
     

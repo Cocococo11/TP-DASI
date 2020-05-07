@@ -30,4 +30,11 @@ public class Spirite extends Medium {
     
     protected Spirite() {
     }
+
+    @Override
+    public String toString() {
+        return "Spirite{ denomination=" + this.getDenomination() + ", genre=" + this.getGenre() + ", presentation=" + this.getPresentation() + "support=" + support + '}';
+    }
+    
+    
 }

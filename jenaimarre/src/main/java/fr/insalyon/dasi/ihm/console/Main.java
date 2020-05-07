@@ -30,11 +30,12 @@ public class Main {
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
 
-        initialiserPersonnes();        
+        initialiserPersonnes();
+        afficherMediums();
         //testerInscriptionClient();     
         //testerRechercheClient();       
         //testerListeClients();           
-        testerAuthentificationPersonne();  
+        //testerAuthentificationPersonne();  
         //saisirInscriptionClient();      
         //saisirRechercheClient();
         //testerDemandeConsultation();
@@ -75,9 +76,9 @@ public class Main {
 
         Employe no1 = new Employe("Michel", "Blanc", "m@b.com", "123","066666666", "homme");
         Employe no2 = new Employe("Pascale", "Braise", "p@b.com", "123","066666666", "femme");
-        Medium riri = new Cartomancien("pouf","pif","paf");
-        Medium fifi = new Spirite("pouf","pif","boum","ppling");
-        Medium loulou = new Astrologue("pouf","pif","boum","ppling","Etoiles");
+        Medium riri = new Cartomancien("1","2","3");
+        Medium fifi = new Spirite("4","5","6","7");
+        Medium loulou = new Astrologue("8","9","10","11","12");
         Client idiot = new Client("Jesuis", "Pasmart", "j@p.com", "123","066666666",new Date(),"Dr");
         
         System.out.println();
