@@ -8,6 +8,7 @@ import fr.insalyon.dasi.metier.modele.Personne;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,7 +22,7 @@ public class ProfilMediumSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 // Il va falloir séraliser un medium en renvoyant chacun de ses attributs en json pour les afficher en html
 
-        ArrayList<Medium> mediums = (ArrayList<Medium>)request.getAttribute("listeMediums");
+        List<Medium> mediums = (List<Medium>)request.getAttribute("listeMediums");
         
         JsonObject container = new JsonObject();
         

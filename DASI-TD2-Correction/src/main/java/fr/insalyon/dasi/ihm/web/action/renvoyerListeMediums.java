@@ -19,12 +19,12 @@ public class renvoyerListeMediums extends Action {
         
         Service service = new Service();
         List<Medium> liste = service.listerMediums(); // to do
-
-
-        
+  
+        request.setAttribute("listeMediums", liste);
         // Gestion de la Session: ici, enregistrer le mail de la personne authentifiée
         HttpSession session = request.getSession();
         if (liste != null) {
+            System.out.println("ça marche liste non nulle");
             session.setAttribute("listeMediums", liste);
         }
         else {

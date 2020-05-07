@@ -70,10 +70,16 @@
                         console.log('Response',response); // LOG dans Console Javascript
                         if (response.connexion) {
                             $('#notification').html("La liste des médiums vivant");  // Message pour le paragraphe de notification
-                            var mediums = response.values();
+                            var mediums = response.listeMediums;
+                            var values = Array();
+
+                            for (key in mediums) {  
+                             values.push(mediums[key]);
+                            }
                             var liste = "";
-                            for(var i = 0; i < mediums.length; i++) {
-                                liste += mediums[i];
+                            for(var i = 0; i < values.length; i++) {
+                                liste += values[i];
+                                liste += "\n";
                             }
                             //afficher la liste des médiums dans un tableau ou liste
                             $('#notification').html(liste);
