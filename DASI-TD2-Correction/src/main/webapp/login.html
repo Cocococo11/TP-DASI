@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>Connexion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="Images/crystal.png">
         <!-- Librairie Javascript: jQuery (v3.4.1) -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
-    <body>
+    <body class="index-body">
 
-        <h1>Connexion</h1>
-
-        <!-- Paragraphe avec id="notification" pour les messages de notification -->
-        <p id="notification">Veuillez saisir votre identifiant (adresse mail) et votre mot de passe.</p>
-        
-        <!-- Champs et Bouton de Formulaire -->
-        Identifiant: <input type="text" id="champ-mail" size="40" />
-        <br/>
-        Mot de passe: <input type="password" id="champ-password" />
-        <br/>
-        <button id="bouton-connexion">Connexion</button>
-        
-        <!-- Lien vers l'accueil -->
-        <p><a href="index.html">Retour à la page d'Accueil</a></p>
+        <h1 class="index-titre">Connexion</h1>
+        <div class="container">
+             <!-- Paragraphe avec id="notification" pour les messages de notification -->
+             <p class="index-p" id="notification">Veuillez saisir votre identifiant (adresse mail) et votre mot de passe.</p>
+             <!-- Champs et Bouton de Formulaire -->
+             <label>Email</label>
+             <input type="text" id="champ-mail" size="40" autofocus />
+             <br/>
+             
+             <label>Mot de passe</label>
+             <input type="password" id="champ-password" size="40"/>
+             <br/><br><br>
+             
+             <button id="bouton-connexion" class="index-bouton">Connexion</button>
+             
+              <!-- Lien vers l'accueil -->
+             <p><a href="index.html" class="index-bouton">Retour à la page d'Accueil</a></p>
+        </div>
 
         <script>
             $(document).ready( function () {

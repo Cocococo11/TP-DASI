@@ -1,0 +1,125 @@
+.index-body {
+    background-image: url('Images/starySky.gif');
+    background-size: cover;
+}
+.index-titre {
+  text-align: center;
+  color: white;
+  font-family: Apple Chancery, cursive;
+  font-size: 500%;
+}
+.white-square {
+  background-color: white;
+  width: 600px;
+  height: 500px;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+}
+.index-p {
+    line-height: 150%;
+    text-align: center;
+    font-family: Marker Felt, fantasy;
+    font-size: 200%;
+    letter-spacing: 3px;
+
+}
+.index-bouton {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: black;
+    color: white;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+
+}
+.index-bouton:active {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+}
+.compte-bouton {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: white;
+    color: black;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: black;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: gray;
+}
+
+.container {
+  background-color: white;
+  width: 800px;
+  height: 500px;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}

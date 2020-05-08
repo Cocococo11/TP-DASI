@@ -9,22 +9,20 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DASI Team
+ * @author Corentin BEL and Madeleine COMTOIS
  */
 public class renvoyerListeMediums extends Action {
 
     @Override
     public void executer(HttpServletRequest request) {
-        // il faut faire cette classe
         
         Service service = new Service();
-        List<Medium> liste = service.listerMediums(); // to do
-  
+        List<Medium> liste = service.listerMediums();
+        
         request.setAttribute("listeMediums", liste);
-        // Gestion de la Session: ici, enregistrer le mail de la personne authentifiée
+        
         HttpSession session = request.getSession();
         if (liste != null) {
-            System.out.println("ça marche liste non nulle");
             session.setAttribute("listeMediums", liste);
         }
         else {

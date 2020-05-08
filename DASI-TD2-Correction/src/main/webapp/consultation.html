@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>Consultation</title>
+        <link rel="icon" href="Images/crystal.png">
         <!-- Librairie Javascript: jQuery (v3.4.1) -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        
     </head>
     <body>
 
@@ -71,27 +73,31 @@
                         if (response.connexion) {
                             $('#notification').html("La liste des médiums vivant");  // Message pour le paragraphe de notification
                             
+                            var liste = "<table border='1'><tr><th>Dénomination</th><th>Genre</th><th>Support</th><th>Formation</th><th>Presentation</th></tr>";
+                            
                             var values = Array();
 
                             for (key in response) {  
                              values.push(response[key]);
                             }
                             
-                            var liste = "";
+                            
                             for(var i = 1; i < values.length; i++) {
                                 var valueOfObjects = Array();
 
                                 for (key in values[i]) {  
                                  valueOfObjects.push(values[i][key]);
                                 }
-                                
+                                liste += "<tr>";
                                 for(var j = 1; j < valueOfObjects.length; j++) {
-                                    liste += valueOfObjects[j];
+                                    liste += "<td>" + valueOfObjects[j] + "</td>";
                                     
                                 }
-                                liste += "<br>";
+                                liste += "</tr>";
+                                //liste += "<br>";
                                 
                             }
+                          
                             //afficher la liste des médiums dans un tableau ou liste
                             $('#notification').html(liste);
                         }
