@@ -73,7 +73,7 @@
                         if (response.connexion) {
                             $('#notification').html("La liste des médiums vivant");  // Message pour le paragraphe de notification
                             
-                            var liste = "<table border='1'><tr><th>Dénomination</th><th>Genre</th><th>Support</th><th>Formation</th><th>Presentation</th></tr>";
+                            var liste = "<table border='1'><tr><th>Dénomination</th><th>Genre</th><th>Presentation</th><th>Formation</th><th>Support</th></tr>";
                             
                             var values = Array();
 
@@ -97,6 +97,7 @@
                                 //liste += "<br>";
                                 
                             }
+                            liste += "</table>";
                           
                             //afficher la liste des médiums dans un tableau ou liste
                             $('#notification').html(liste);
