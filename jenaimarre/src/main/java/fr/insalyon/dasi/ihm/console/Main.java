@@ -77,9 +77,9 @@ public class Main {
 
         Employe no1 = new Employe("Michel", "Blanc", "m@b.com", "123","066666666", "homme");
         Employe no2 = new Employe("Pascale", "Braise", "p@b.com", "123","066666666", "femme");
-        Medium riri = new Cartomancien("1","2","3");
-        Medium fifi = new Spirite("4","5","6","7");
-        Medium loulou = new Astrologue("8","9","10","11","12");
+        Medium riri = new Cartomancien("Riri","M","Comprenez votre entourage grâce à mes cartes ! Résultats rapides.");
+        Medium fifi = new Spirite("Fifi", "F", "Spécialiste des grandes conversations au-delà de TOUTES les frontières", "Boule de cristal");
+        Medium loulou = new Astrologue("Loulou","F","Basée à Champigny-sur-Marne, Serena vous révèlera votre avenir pour éclairer votre passé.", "2006", "École Normale Supérieure d’Astrologie (ENS-Astro)");
         Client idiot = new Client("Jesuis", "Pasmart", "j@p.com", "123","066666666",new Date(),"Dr");
         
         System.out.println();
