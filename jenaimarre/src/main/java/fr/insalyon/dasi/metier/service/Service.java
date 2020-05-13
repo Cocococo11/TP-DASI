@@ -157,5 +157,18 @@ public class Service {
         p.modifierConsultation(consultation);
         JpaUtil.fermerContextePersistance();
     }
+    public Personne renvoyerPersonne(String mail) {
+        Personne resultat = null;
+        JpaUtil.creerContextePersistance();
+        try {
+            resultat = personneDao.chercherParMail(mail);
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service renvoyerPersonne()", ex);
+            resultat = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return resultat;
+    }
 
 }

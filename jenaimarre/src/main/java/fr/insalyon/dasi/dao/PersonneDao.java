@@ -34,7 +34,7 @@ public class PersonneDao {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         return em.find(Personne.class, clientId); // renvoie null si l'identifiant n'existe pas
     }
-    
+
     public Personne chercherParMail(String idMail) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         TypedQuery<Personne> query = em.createQuery("SELECT p FROM Personne p WHERE p.mail = :mail", Personne.class);
