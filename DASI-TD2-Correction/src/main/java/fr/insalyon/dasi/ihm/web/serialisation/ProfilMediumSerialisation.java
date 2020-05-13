@@ -38,19 +38,20 @@ public class ProfilMediumSerialisation extends Serialisation {
                 JsonObject jsonMedium = new JsonObject();
                 
                 jsonMedium.addProperty("id", m.getId());
-                jsonMedium.addProperty("genre", m.getGenre());
-                jsonMedium.addProperty("denomination", m.getDenomination());
-                jsonMedium.addProperty("presentation", m.getPresentation());
+                jsonMedium.addProperty("Type", m.getClass().getSimpleName());
+                jsonMedium.addProperty("Genre", m.getGenre());
+                jsonMedium.addProperty("Denomination", m.getDenomination());
+                jsonMedium.addProperty("Presentation", m.getPresentation());
                 if(m instanceof Spirite)
                 {
                     Spirite p = (Spirite)m;
-                    jsonMedium.addProperty("support", p.getSupport());
+                    jsonMedium.addProperty("Support", p.getSupport());
                 }
                 if(m instanceof Astrologue)
                 {
                     Astrologue p = (Astrologue)m;
-                    jsonMedium.addProperty("promotion", p.getPromotion());
-                    jsonMedium.addProperty("formation", p.getFormation());
+                    jsonMedium.addProperty("Promotion", p.getPromotion());
+                    jsonMedium.addProperty("Formation", p.getFormation());
                 }
 
                 ++i;
