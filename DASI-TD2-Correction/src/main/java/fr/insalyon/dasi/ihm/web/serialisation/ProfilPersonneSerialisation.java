@@ -33,10 +33,13 @@ public class ProfilPersonneSerialisation extends Serialisation {
         container.addProperty("connexion", connexion);
         
         if (p != null) {
-            JsonObject jsonMedium = new JsonObject();
+            JsonObject jsonPersonne = new JsonObject();
+            jsonPersonne.addProperty("id", p.getId());
+            jsonPersonne.addProperty("nom", p.getNom());
+            jsonPersonne.addProperty("prenom", p.getPrenom());
+            jsonPersonne.addProperty("mail", p.getMail());
 
-            jsonMedium.addProperty("nom", p.getPrenom());
-            jsonMedium.addProperty("prenom", p.getNom());
+            container.add("personne", jsonPersonne);
         }
         
 
