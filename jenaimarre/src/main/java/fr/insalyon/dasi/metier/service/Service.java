@@ -56,7 +56,7 @@ public class Service {
         }
         c.setListeConsultations(liste);
     }
-    public Personne rechercherClientParId(Long id) {
+    public Personne rechercherPersonneParId(Long id) {
         Personne resultat = null;
         JpaUtil.creerContextePersistance();
         try {

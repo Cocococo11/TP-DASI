@@ -30,9 +30,9 @@ public class PersonneDao {
         em.persist(consultation);
     }
     
-    public Personne chercherParId(Long clientId) {
+    public Personne chercherParId(Long personneId) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        return em.find(Personne.class, clientId); // renvoie null si l'identifiant n'existe pas
+        return em.find(Personne.class, personneId); // renvoie null si l'identifiant n'existe pas
     }
 
     public Personne chercherParMail(String idMail) {
