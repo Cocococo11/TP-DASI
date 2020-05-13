@@ -14,10 +14,13 @@ and open the template in the editor.
     </head>
     <body class="index-body">
         
+        <p class="index-p" id="notification"></p>
+        
         <h1 class="index-titre"> Créer un compte </h1>
         
         <div class="container">
-        <form>
+        <form action="./ActionServlet.java">
+        <span id="todo"> inscrire </span>
         <div class="row">
           <div class="col-25">
             <label for="prenom">Prénom</label>
@@ -71,7 +74,7 @@ and open the template in the editor.
             <label for="phone">Numéro de téléphone </label>
            </div>
          <div class="col-25">
-             <input type="tel" id="phone" name="phone" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
+             <input type="tel" id="phone" name="phone" required>
              <small>Format: 06 00 00 00 00 </small>
          </div>
          <div class="col-25">
@@ -96,5 +99,7 @@ and open the template in the editor.
         </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         
         <a href="index.html" class="compte-bouton">Retour à la page d'accueil</a>
+        
+       
     </body>
 </html>

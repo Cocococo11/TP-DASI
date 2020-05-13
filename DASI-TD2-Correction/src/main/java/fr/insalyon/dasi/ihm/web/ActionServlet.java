@@ -3,6 +3,7 @@ package fr.insalyon.dasi.ihm.web;
 import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.ihm.web.action.Action;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierPersonneAction;
+import fr.insalyon.dasi.ihm.web.action.InscrireClient;
 import fr.insalyon.dasi.ihm.web.action.renvoyerListeMediums;
 import fr.insalyon.dasi.ihm.web.action.renvoyerPersonne;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
@@ -60,6 +61,8 @@ public class ActionServlet extends HttpServlet {
                 case "recuperer-donnees":
                     action = new renvoyerPersonne();
                     serialisation = new ProfilPersonneSerialisation();
+                case "inscrire":
+                    action = new InscrireClient();
                 case "...":
                     break;
             }
