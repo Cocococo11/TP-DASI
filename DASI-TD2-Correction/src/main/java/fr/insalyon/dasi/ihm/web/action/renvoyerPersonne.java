@@ -17,9 +17,12 @@ public class renvoyerPersonne extends Action {
     public void executer(HttpServletRequest request) {
         
         Service service = new Service();
-        String mail = request.getParameter("mail");
+        HttpSession session = request.getSession();
+        String mail = (String)session.getAttribute("mailPersonne");
         Personne personne = service.renvoyerPersonne(mail);
-        
+        if(personne!=null){
+            request.setAttribute("logged", true);
+        }
         request.setAttribute("personne", personne);
 
     }

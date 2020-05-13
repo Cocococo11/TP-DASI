@@ -35,15 +35,11 @@
 
         <script>
             function initDonneesProfil() {
-                var session = request.getSession();
-                
-                var mail = session.getAttribute("mailPersonne");
                 $.ajax({
                         url: './ActionServlet',
-                        method: 'POST',
+                        method: 'GET',
                         data: {
                             todo: 'recuperer-donnees',
-                            mail: mail
                         },
                         dataType: 'json'
                     })
