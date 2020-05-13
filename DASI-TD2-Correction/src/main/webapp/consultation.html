@@ -73,29 +73,26 @@
                         if (response.connexion) {
                             $('#notification').html("La liste des médiums vivant");  // Message pour le paragraphe de notification
                             
-                            var liste = "<table border='1'><tr><th>Dénomination</th><th>Genre</th><th>Presentation</th><th>Formation</th><th>Promotion</th><th>Support</th></tr>";
+                            var liste = "<table border='1'><tr><th>Type</th><th>Dénomination</th><th>Genre</th><th>Presentation</th><th>Formation</th><th>Promotion</th><th>Support</th></tr>";
                             
-                            var values = Array();
+                            //tableau des objets mediums qui sont dans l'objet response
+                            var madiums = Array();
 
                             for (key in response) {  
-                             values.push(response[key]);
+                             madiums.push(response[key]);
                             }
                             
-                            
-                            for(var i = 1; i < values.length; i++) {
-                                var valueOfObjects = Array();
-
-                                for (key in values[i]) {  
-                                 valueOfObjects.push(values[i][key]);
-                                }
-                                liste += "<tr>";
-                                for(var j = 1; j < valueOfObjects.length; j++) {
-                                    liste += "<td>" + valueOfObjects[j] + "</td>";
-                                    
-                                }
-                                liste += "</tr>";
-                                //liste += "<br>";
-                                
+                            //boucler à travers les mediums et ajouter leurs données dans une table
+                            for(var i = 1; i < madiums.length; i++) {
+                               
+                                liste += "<tr><td>" + madiums[i]["Type"] + "</td>";
+                                liste += "<td>" + madiums[i]["Denomination"] + "</td>";
+                                liste += "<td>" + madiums[i]["Genre"] + "</td>";
+                                liste += "<td>" + madiums[i]["Presentation"] + "</td>";
+                                liste += "<td>" + madiums[i]["Formation"] + "</td><";
+                                liste += "<td>" + madiums[i]["Promotion"] + "</td>";
+                                liste += "<td>" + madiums[i]["Support"] + "</td></tr>";
+   
                             }
                             liste += "</table>";
                           
