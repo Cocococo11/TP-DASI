@@ -19,6 +19,7 @@ public class renvoyerPersonne extends Action {
         Service service = new Service();
         HttpSession session = request.getSession();
         String mail = (String)session.getAttribute("mailPersonne");
+        System.out.println(mail);
         Personne personne = service.renvoyerPersonne(mail);
         if(personne!=null){
             request.setAttribute("logged", true);
