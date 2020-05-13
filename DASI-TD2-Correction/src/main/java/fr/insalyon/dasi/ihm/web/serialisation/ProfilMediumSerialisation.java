@@ -3,8 +3,11 @@ package fr.insalyon.dasi.ihm.web.serialisation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import fr.insalyon.dasi.metier.modele.Astrologue;
+import fr.insalyon.dasi.metier.modele.Cartomancien;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Personne;
+import fr.insalyon.dasi.metier.modele.Spirite;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -38,6 +41,18 @@ public class ProfilMediumSerialisation extends Serialisation {
                 jsonMedium.addProperty("genre", m.getGenre());
                 jsonMedium.addProperty("denomination", m.getDenomination());
                 jsonMedium.addProperty("presentation", m.getPresentation());
+                if(m instanceof Spirite)
+                {
+                    Spirite p = (Spirite)m;
+                    jsonMedium.addProperty("support", p.getSupport());
+                }
+                if(m instanceof Astrologue)
+                {
+                    Astrologue p = (Astrologue)m;
+                    jsonMedium.addProperty("promotion", p.getPromotion());
+                    jsonMedium.addProperty("formation", p.getFormation());
+                }
+
                 ++i;
                 container.add("listeMediums"+i, jsonMedium);
             }
