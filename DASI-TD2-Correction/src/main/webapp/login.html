@@ -74,6 +74,11 @@
                         
                     });
                 });
+                $('.container').on( 'keyup','input', function (event) {
+                    if(event.which===13){
+                        $(this).closest('.container').find('button').first().trigger('click');
+                    }
+                });
             });
         </script>
     </body>

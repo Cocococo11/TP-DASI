@@ -4,8 +4,10 @@ import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.ihm.web.action.Action;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierPersonneAction;
 import fr.insalyon.dasi.ihm.web.action.renvoyerListeMediums;
+import fr.insalyon.dasi.ihm.web.action.renvoyerPersonne;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilMediumSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.ProfilPersonneSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -55,6 +57,9 @@ public class ActionServlet extends HttpServlet {
                     action = new renvoyerListeMediums();
                     serialisation = new ProfilMediumSerialisation();
                     break;
+                case "recuperer-donnees":
+                    action = new renvoyerPersonne();
+                    serialisation = new ProfilPersonneSerialisation();
                 case "...":
                     break;
             }

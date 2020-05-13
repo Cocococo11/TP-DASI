@@ -8,17 +8,22 @@
     </head>
     <body>
 
-        <h1>Votre profil -  </h1>
+        <h1>Votre profil - <span id="nom-personne"></span></h1>
         
+        <ul>
         <h2>Vos informations </h2>
         
-        Prénom: <input type="text" id="champ-prenom" size="40" />
-        Nom: <input type="text" id="champ-nom" size="40" />
-        Email: <input type="text" id="champ-email" size="40" />
-        Téléphone: <input type="text" id="champ-telephone" size="40" />
-        
+        <li>Prénom: <input type="text" id="champ-prenom" size="40" /></li> 
+        </br>
+        <li>Nom: <input type="text" id="champ-nom" size="40" /></li> 
+        </br>
+        <li>Email: <input type="text" id="champ-email" size="40" /></li> 
+        </br>
+        <li>Téléphone: <input type="text" id="champ-telephone" size="40" /></li> 
+        </br>
         <button id="bouton-enregistrer">Enregistrer les modifications</button>
         
+        </ul>
         <h2>Votre profil astral </h2>
         
         <h2>Votre historique de consultations </h2>
@@ -29,9 +34,36 @@
         
 
         <script>
-            $(document).ready( function () {
-                //fill the informations and the astral profile and consultations history
-            });
+            function initDonneesProfil() {
+                var mail = session.getAttribute("mailPersonne");
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'recuperer-donnees',
+                            mail: mail
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        var personne = response.personne;
+                        if (response.logged) {
+                            $('#nom-personne').html(personne.nom +' '+personne.prenom);
+                        }
+                        else {
+                            $('#nom-personne').html("Veuillez vous connecter d'abord"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                        
+            };
             
         </script>
     </body>
