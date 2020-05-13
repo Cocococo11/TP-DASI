@@ -29,6 +29,7 @@ public class Main {
         // TODO : Pensez à créer une unité de persistance "DASI-PU" et à vérifier son nom dans la classe JpaUtil
         // Contrôlez l'affichage du log de JpaUtil grâce à la méthode log de la classe JpaUtil
         JpaUtil.init();
+        System.out.println("Ca marche pas :(");
 
         initialiserPersonnes();
         afficherMediums();
