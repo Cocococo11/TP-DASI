@@ -35,6 +35,8 @@
 
         <script>
             function initDonneesProfil() {
+                var session = request.getSession();
+                
                 var mail = session.getAttribute("mailPersonne");
                 $.ajax({
                         url: './ActionServlet',
@@ -62,8 +64,12 @@
                     .always( function () { // Fonction toujours appelée
                         
                     });
+                    
                         
             };
+            $(document).ready( function () {
+               initDonneesProfil();
+            });
             
         </script>
     </body>
