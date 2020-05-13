@@ -21,16 +21,17 @@
         </br>
         <li>Téléphone: <input type="text" id="champ-telephone" size="40" /></li> 
         </br>
-        <button id="bouton-enregistrer">Enregistrer les modifications</button>
+        <button id="bouton-enregistrer"><span id="span-enregistrer">Enregistrer les modifications</span></button>
         
         </ul>
+        
         <h2>Votre profil astral </h2>
         
         <h2>Votre historique de consultations </h2>
 
         <input type="button" name="bouton-consultation" value="Consulter un medium" onclick="self.location.href='consultation.html'"> 
         
-        <input type="button" name="deconnexion" value="Se déconnecter" onclick="self.location.href='login.html'"> 
+        <button id="bouton-deconnecter">Se déconnecter</button>
         
 
         <script>
@@ -48,6 +49,10 @@
                         var personne = response.personne;
                         if (response.connexion) {
                             $('#nom-personne').html(personne.nom +' '+personne.prenom);
+                            $('#champ-prenom').val(personne.prenom);
+                            $('#champ-nom').val(personne.nom);
+                            $('#champ-email').val(personne.mail);
+                            $('#champ-telephone').val(personne.telephone);
                         }
                         else {
                             $('#nom-personne').html("Veuillez vous connecter d'abord"); // Message pour le paragraphe de notification
@@ -64,7 +69,72 @@
                         
             };
             $(document).ready( function () {
-               initDonneesProfil();
+                initDonneesProfil();
+                $('#bouton-enregistrer').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                     console.log("clic sur le bouton enregistrer"); // LOG dans Console Javascript
+                     $('#span-enregistrer').html("Enregistrement..."); // Message pour le paragraphe de notification
+
+                     // Récupération de la valeur des champs du formulaire
+                     var champMail = $('#champ-mail').val();
+                     var champPrenom = $('#champ-prenom').val();
+                     var champNom = $('#champ-nom').val();
+                     var champTelephone = $('#champ-telephone').val();
+
+                     // Appel AJAX
+                     $.ajax({
+                         url: './ActionServlet',
+                         method: 'POST',
+                         data: {
+                             todo: 'modifierDonneesClient',
+                             mail:  champMail,
+                             prenom: champPrenom,
+                             telephone: champTelephone,
+                             nom: champNom
+                           
+                         },
+                         dataType: 'json'
+                     })
+                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                         console.log('Response',response); // LOG dans Console Javascript
+                         if (response.changement) {
+                             $('#notification').html("Changement effectué");  // Message pour le paragraphe de notification
+                         }
+                         else {
+                             $('#notification').html("Veuillez réessayer plus tard :^)"); // Message pour le paragraphe de notification
+                         }
+                     })
+                     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                         console.log('Error',error); // LOG dans Console Javascript
+                         alert("Erreur lors de l'appel AJAX");
+                     })
+                     .always( function () { // Fonction toujours appelée
+
+                     });
+                 });
+                 $('#bouton-deconnecter').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                     console.log("clic sur le bouton deconnecter"); // LOG dans Console Javascript
+                     $.ajax({
+                         url: './ActionServlet',
+                         method: 'POST',
+                         data: {
+                             todo: 'deconnecter',                   },
+                         dataType: 'json'
+                     })
+                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                         console.log('Response',response); // LOG dans Console Javascript
+                         window.location.href = "index.html";
+                     })
+                     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                         console.log('Error',error); // LOG dans Console Javascript
+                         alert("Erreur lors de l'appel AJAX");
+                     })
+                     .always( function () { // Fonction toujours appelée
+
+                     });
+                 });
+
             });
             
         </script>

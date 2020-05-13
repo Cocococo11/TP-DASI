@@ -38,7 +38,8 @@ public class ProfilPersonneSerialisation extends Serialisation {
             jsonPersonne.addProperty("nom", p.getNom());
             jsonPersonne.addProperty("prenom", p.getPrenom());
             jsonPersonne.addProperty("mail", p.getMail());
-
+            jsonPersonne.addProperty("telephone", p.getTelephone());
+            
             container.add("personne", jsonPersonne);
         }
         
