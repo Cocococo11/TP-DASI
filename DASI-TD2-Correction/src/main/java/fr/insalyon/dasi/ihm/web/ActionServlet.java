@@ -6,6 +6,7 @@ import fr.insalyon.dasi.ihm.web.action.AuthentifierPersonneAction;
 import fr.insalyon.dasi.ihm.web.action.InscrireClient;
 import fr.insalyon.dasi.ihm.web.action.renvoyerListeMediums;
 import fr.insalyon.dasi.ihm.web.action.renvoyerPersonne;
+import fr.insalyon.dasi.ihm.web.action.seDeconnecter;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilMediumSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilPersonneSerialisation;
@@ -66,6 +67,8 @@ public class ActionServlet extends HttpServlet {
                     action = new InscrireClient();
                     serialisation = new ProfilClientSerialisation();
                     break;
+                case "deconnecter":
+                    action = new seDeconnecter();
                 case "...":
                     break;
             }

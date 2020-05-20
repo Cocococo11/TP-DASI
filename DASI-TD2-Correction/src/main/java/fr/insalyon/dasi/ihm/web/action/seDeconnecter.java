@@ -10,18 +10,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author Corentin BEL and Madeleine COMTOIS
  */
-public class renvoyerPersonne extends Action {
+public class seDeconnecter extends Action {
 
     @Override
     public void executer(HttpServletRequest request) {
         
-        Service service = new Service();
         HttpSession session = request.getSession();
-        Long id = (Long)session.getAttribute("idPersonne");
-        System.out.println(id);
-        Personne personne = service.rechercherPersonneParId(id);
- 
-        request.setAttribute("personne", personne);
+        session.setAttribute("idPersonne", null);
 
     }
     
