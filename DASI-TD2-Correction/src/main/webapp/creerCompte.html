@@ -11,15 +11,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="Images/crystal.png">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <body class="index-body">
         
-        <p class="index-p" id="notification"></p>
+        <p class="index-titre" id="notification"></p>
         
         <h1 class="index-titre"> Créer un compte </h1>
         
         <div class="container">
-        <span id="todo"> inscrire </span>
         <div class="row">
           <div class="col-25">
             <label for="prenom">Prénom</label>
@@ -80,7 +80,7 @@ and open the template in the editor.
             <label for="email">Email</label>
           </div>
           <div class="col-25">
-            <input type="email" id="email" name="email" >
+            <input type="email" id="email" name="email" required>
           </div>
         </div>
         <div class="row">
@@ -92,11 +92,80 @@ and open the template in the editor.
          </div>
         </div> <br><br>
         <div class="row">
-          <input type="submit" value="Submit">
+          <button class="index-bouton" id="inscrire" >S'Inscrire</button>
         </div>
         </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         
+        <div id="message" style="color:white;text-align:center;">  </div>
         <a href="index.html" class="compte-bouton">Retour à la page d'accueil</a>
+        
+        
+        
+        <script>
+            $(document).ready( function () {
+                $('#inscrire').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                    console.log("clic sur le bouton de s'inscrire"); // LOG dans Console Javascript
+                    $('#notification').html("Connexion..."); // Message pour le paragraphe de notification
+
+                    // Récupération de la valeur des champs du formulaire
+                    var prenom = $('#prenom').val();
+                    var nom = $('#nom').val();
+                    var anniversaire = $('#anniversaire').val();
+                    var adresse = $('#adresse').val();
+                    var code = $('#code').val();
+                    var ville = $('#ville').val();
+                    var phone = $('#phone').val();
+                    var email = $('#email').val();
+                    var motDePasse = $('#motDePasse').val();
+                   
+  
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'inscrire',
+                            Prenom: prenom,
+                            Nom: nom,
+                            Anniversaire: anniversaire,
+                            Adresse: adresse,
+                            Code: code,
+                            Ville: ville,
+                            Phone: phone,
+                            Email: email,
+                            MotDePasse: motDePasse
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        if (response.connexion) {
+                            $('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                            // TODO: afficher les informations de la personne dans la notification
+                            // Exemple: Connexion de Ada Lovelace (ID 1)
+                            // Message pour le paragraphe de notification
+                            $('#message').html("Vous êtes inscrit ! Vous pouvez maintenant vous connecter"); 
+                        }
+                        else {
+                            $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                });
+                $('.container').on( 'keyup','input', function (event) {
+                    if(event.which===13){
+                        $(this).closest('.container').find('button').first().trigger('click');
+                    }
+                });
+            });
+        </script>
         
        
     </body>

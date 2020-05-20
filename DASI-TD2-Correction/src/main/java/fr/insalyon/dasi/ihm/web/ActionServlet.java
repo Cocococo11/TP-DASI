@@ -61,8 +61,11 @@ public class ActionServlet extends HttpServlet {
                 case "recuperer-donnees":
                     action = new renvoyerPersonne();
                     serialisation = new ProfilPersonneSerialisation();
+                    break;
                 case "inscrire":
                     action = new InscrireClient();
+                    serialisation = new ProfilClientSerialisation();
+                    break;
                 case "...":
                     break;
             }
