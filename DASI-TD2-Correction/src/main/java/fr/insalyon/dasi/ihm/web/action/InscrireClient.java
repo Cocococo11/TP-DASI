@@ -35,7 +35,7 @@ public class InscrireClient extends Action {
         
         Date ann;
        try {
-           ann = new SimpleDateFormat("yyyy/MM/DD").parse(Anniversaire);
+           ann = new SimpleDateFormat("yyyy-MM-DD").parse(Anniversaire);
        } catch (ParseException ex) {
            Logger.getLogger(InscrireClient.class.getName()).log(Level.SEVERE, null, ex);
            ann = null;
