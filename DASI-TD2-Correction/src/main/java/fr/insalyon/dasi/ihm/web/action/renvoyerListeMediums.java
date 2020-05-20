@@ -20,14 +20,6 @@ public class renvoyerListeMediums extends Action {
         
         request.setAttribute("listeMediums", liste);
         
-        HttpSession session = request.getSession();
-        if (liste != null) {
-            session.setAttribute("listeMediums", liste);
-        }
-        else {
-            session.removeAttribute("listeMediums");
-        }
-
     }
     
 }

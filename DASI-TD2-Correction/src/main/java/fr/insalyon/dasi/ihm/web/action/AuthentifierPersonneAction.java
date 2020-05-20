@@ -29,7 +29,7 @@ public class AuthentifierPersonneAction extends Action {
             session.setAttribute("idPersonne", personne.getId());
         }
         else {
-            session.removeAttribute("mailPersonne");
+            session.removeAttribute("idPersonne");
         }
     }
     

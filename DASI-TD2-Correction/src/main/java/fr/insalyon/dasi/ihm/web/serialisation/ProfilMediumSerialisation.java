@@ -2,6 +2,7 @@ package fr.insalyon.dasi.ihm.web.serialisation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.insalyon.dasi.metier.modele.Astrologue;
 import fr.insalyon.dasi.metier.modele.Cartomancien;
@@ -33,7 +34,7 @@ public class ProfilMediumSerialisation extends Serialisation {
         container.addProperty("connexion", connexion);
         
         if (mediums != null) {
-            int i=0;
+            JsonArray jsonListe = new JsonArray();
             for(Medium m : mediums) {
                 JsonObject jsonMedium = new JsonObject();
                 
@@ -53,10 +54,9 @@ public class ProfilMediumSerialisation extends Serialisation {
                     jsonMedium.addProperty("Promotion", p.getPromotion());
                     jsonMedium.addProperty("Formation", p.getFormation());
                 }
-
-                ++i;
-                container.add("listeMediums"+i, jsonMedium);
+                jsonListe.add( jsonMedium);
             }
+            container.add("listeMediums",jsonListe);
         }
         
 

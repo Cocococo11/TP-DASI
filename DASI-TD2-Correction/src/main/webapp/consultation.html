@@ -76,15 +76,11 @@
                             var liste = "<table border='1'><tr><th>Type</th><th>Dénomination</th><th>Genre</th><th>Presentation</th><th>Formation</th><th>Promotion</th><th>Support</th></tr>";
                             
                             //tableau des objets mediums qui sont dans l'objet response
-                            var madiums = Array();
+                            var madiums = response.listeMediums;
 
-                            for (key in response) {  
-                             madiums.push(response[key]);
-                            }
-                            
                             //boucler à travers les mediums et ajouter leurs données dans une table
-                            for(var i = 1; i < madiums.length; i++) {
-                               
+                            for(var i = 0; i < madiums.length; i++) {
+                            //p101-102  
                                 liste += "<tr><td>" + madiums[i]["Type"] + "</td>";
                                 liste += "<td>" + madiums[i]["Denomination"] + "</td>";
                                 liste += "<td>" + madiums[i]["Genre"] + "</td>";
