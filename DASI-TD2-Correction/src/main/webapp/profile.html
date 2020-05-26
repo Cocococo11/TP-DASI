@@ -3,45 +3,41 @@
     <head>
         <meta charset="UTF-8">
         <title>Profile</title>
+         <link rel="icon" href="Images/crystal.png">
         <!-- Librairie Javascript: jQuery (v3.4.1) -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
-    <body>
+    <body style="background-image: url('Images/zodiac.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
-        <h1>Votre profil - <span id="nom-personne"></span></h1>
+        <h1 style="text-align:center;color:white;background-color: goldenrod;">Votre profil </h1>
+        <h1 style="font-family:Apple Chancery, cursive;color:white;text-align:center;font-size: 300%;background-color: goldenrod;"> Bienvenue, <span id="nom-personne"> </span></h1>
         
-        <ul>
-        <h2>Vos informations </h2>
-        
-        <li>Prénom: <input type="text" id="champ-prenom" size="40" /></li> 
-        </br>
-        <li>Nom: <input type="text" id="champ-nom" size="40" /></li> 
-        </br>
-        <li>Email: <input type="text" id="champ-email" size="40" /></li> 
-        </br>
-        <li>Téléphone: <input type="text" id="champ-telephone" size="40" /></li> 
-        </br>
+        <h2 style="color:white;">Vos informations </h2>
+        <ul style="color:white;">
+            <li style="margin-bottom: 15px;">Prénom: <input type="text" id="champ-prenom" size="40" /></li> 
+            <li style="margin-bottom: 15px;">Nom: <input type="text" id="champ-nom" size="40" /></li> 
+            <li style="margin-bottom: 15px;">Email: <input type="text" id="champ-email" size="40" /></li> 
+            <li style="margin-bottom: 15px;">Téléphone: <input type="text" id="champ-telephone" size="40" /></li>    
+        </ul>
         <button id="bouton-enregistrer"><span id="span-enregistrer">Enregistrer les modifications</span></button>
         
-        </ul>
+        <h2 style="color:white;">Votre profil astral </h2>
         
-        <h2>Votre profil astral </h2>
-        </br>
-        Votre signe du zodiaque : 
-        <span id="signe-zodiaque"></span>
-        </br>
-        Votre signe chinois :
-        <span id="signe-chinois"></span>
-        </br>
-        Votre couleur :
-        <span id="couleur"></span>
-        </br>
-        Votre animal fétiche :
-        <span id="animal"></span>
-        </br>
+        <span style="color:white;"> Votre signe du zodiaque : </span>
+        <span style="color:white;" id="signe-zodiaque"></span>
+        <br>
+        <span style="color:white;">Votre signe chinois :</span>
+        <span style="color:white;" id="signe-chinois"></span>
+        <br>
+        <span style="color:white;">Votre couleur :</span>
+        <span style="color:white;" id="couleur"></span>
+        <br>
+        <span style="color:white;">Votre animal fétiche :</span>
+        <span style="color:white;" id="animal"></span>
+        <br>
         
         
-        <h2>Votre historique de consultations </h2>
+        <h2 style="color:white;">Votre historique de consultations </h2>
 
         <input type="button" name="bouton-consultation" value="Consulter un medium" onclick="self.location.href='consultation.html'"> 
         
@@ -54,7 +50,7 @@
                         url: './ActionServlet',
                         method: 'GET',
                         data: {
-                            todo: 'recuperer-donnees',
+                            todo: 'recuperer-donnees'
                         },
                         dataType: 'json'
                     })
@@ -87,7 +83,7 @@
                         url: './ActionServlet',
                         method: 'GET',
                         data: {
-                            todo: 'recupererProfilAstral',
+                            todo: 'recupererProfilAstral'
                         },
                         dataType: 'json'
                     })
@@ -166,7 +162,8 @@
                          url: './ActionServlet',
                          method: 'GET',
                          data: {
-                             todo: 'deconnecter',                   },
+                             todo: 'deconnecter'                  
+                         },
                          dataType: 'json'
                      })
                      .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
