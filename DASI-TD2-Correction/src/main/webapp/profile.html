@@ -58,7 +58,7 @@
                         console.log('Response',response); // LOG dans Console Javascript
                         var personne = response.personne;
                         if (response.connexion) {
-                            $('#nom-personne').html(personne.nom +' '+personne.prenom);
+                            $('#nom-personne').html(personne.prenom +' '+personne.nom);
                             $('#champ-prenom').val(personne.prenom);
                             $('#champ-nom').val(personne.nom);
                             $('#champ-email').val(personne.mail);
