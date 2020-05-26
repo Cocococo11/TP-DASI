@@ -26,6 +26,20 @@
         </ul>
         
         <h2>Votre profil astral </h2>
+        </br>
+        Votre signe du zodiaque : 
+        <span id="signe-zodiaque"></span>
+        </br>
+        Votre signe chinois :
+        <span id="signe-chinois"></span>
+        </br>
+        Votre couleur :
+        <span id="couleur"></span>
+        </br>
+        Votre animal fétiche :
+        <span id="animal"></span>
+        </br>
+        
         
         <h2>Votre historique de consultations </h2>
 
@@ -68,8 +82,41 @@
                     
                         
             };
+            function initProfilAstral() {
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'GET',
+                        data: {
+                            todo: 'recupererProfilAstral',
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        var profil = response.profil;
+                        if (response.connexion) {
+                            $('#signe-zodiaque').html(profil.signezodiaque);
+                            $('#signe-chinois').html(profil.signechinois);
+                            $('#couleur').html(profil.couleur);
+                            $('#animal').html(profil.animal);
+                        }
+                        else {
+                            $('#nom-personne').html("Veuillez vous connecter d'abord"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                    
+                        
+            };
             $(document).ready( function () {
                 initDonneesProfil();
+                initProfilAstral();
                 $('#bouton-enregistrer').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                      console.log("clic sur le bouton enregistrer"); // LOG dans Console Javascript

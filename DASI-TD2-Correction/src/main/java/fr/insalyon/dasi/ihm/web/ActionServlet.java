@@ -6,8 +6,10 @@ import fr.insalyon.dasi.ihm.web.action.AuthentifierPersonneAction;
 import fr.insalyon.dasi.ihm.web.action.InscrireClient;
 import fr.insalyon.dasi.ihm.web.action.renvoyerListeMediums;
 import fr.insalyon.dasi.ihm.web.action.renvoyerPersonne;
+import fr.insalyon.dasi.ihm.web.action.renvoyerProfilAstral;
 import fr.insalyon.dasi.ihm.web.action.seDeconnecter;
 import fr.insalyon.dasi.ihm.web.serialisation.DeconnecterSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.ProfilAstralSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilMediumSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilPersonneSerialisation;
@@ -71,6 +73,9 @@ public class ActionServlet extends HttpServlet {
                 case "deconnecter":
                     action = new seDeconnecter();
                     serialisation = new DeconnecterSerialisation();
+                case "recupererProfilAstral":
+                    action = new renvoyerProfilAstral();
+                    serialisation = new ProfilAstralSerialisation();    
                 case "...":
                     break;
             }
