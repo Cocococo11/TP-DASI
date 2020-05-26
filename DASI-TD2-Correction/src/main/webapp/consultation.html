@@ -18,14 +18,52 @@
         
         <p id="notification">Pas de consultation choisie</p>
 
-        <button id="bouton-consulter">Consulter maintenant</button>
         
+        <button id="bouton-medium1">Consulter medium1</button>
+        
+        <button id="bouton-medium2">Consulter medium2</button>
+        
+        <button id="bouton-medium3">Consulter medium3</button>
+        
+        </br>
         <button id="bouton-deconnecter">Se déconnecter</button>
         
 
         <script>
+            function remplirBoutonsMediums() {
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'GET',
+                        data: {
+                            todo: 'recupererListeMediums'
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        var mediums = response.listeMediums;
+                        if (response.connexion) {
+                            $('#bouton-medium1').html("Consulter "+mediums[0]["Denomination"]);
+                            $('#bouton-medium2').html("Consulter "+mediums[1]["Denomination"]);
+                            $('#bouton-medium3').html("Consulter "+mediums[2]["Denomination"]);
+                        }
+                        else {
+                            $('#nom-personne').html("Veuillez vous connecter d'abord"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                    
+                        
+            };
             $(document).ready( function () {
-                $('#bouton-consulter').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+                remplirBoutonsMediums();
+                $('#bouton-medium1').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                     console.log("clic sur le bouton de consultation"); // LOG dans Console Javascript
                     // Appel AJAX
@@ -34,6 +72,71 @@
                         method: 'POST',
                         data: {
                             todo: 'creer-consultation',
+                            medium: 'medium1'
+                            
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        if (response.consultation) {
+                            $('#notification').html("Consultation acceptée, veuillez vérifier vos mails");  // Message pour le paragraphe de notification
+                            var consultation = response.consultation;
+                        }
+                        else {
+                            $('#notification').html("Erreur de consultation"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                });
+                    $('#bouton-medium3').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                    console.log("clic sur le bouton de consultation"); // LOG dans Console Javascript
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'creer-consultation',
+                            medium: 'medium3'
+                            
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        if (response.consultation) {
+                            $('#notification').html("Consultation acceptée, veuillez vérifier vos mails");  // Message pour le paragraphe de notification
+                            var consultation = response.consultation;
+                        }
+                        else {
+                            $('#notification').html("Erreur de consultation"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                });
+                    $('#bouton-medium2').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                    console.log("clic sur le bouton de consultation"); // LOG dans Console Javascript
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'creer-consultation',
+                            medium: 'medium2'
                             
                         },
                         dataType: 'json'

@@ -75,7 +75,10 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new DeconnecterSerialisation();
                 case "recupererProfilAstral":
                     action = new renvoyerProfilAstral();
-                    serialisation = new ProfilAstralSerialisation();    
+                    serialisation = new ProfilAstralSerialisation();   
+                case "creer-consultation":
+                    action = new creerConsultation();
+                    serialisation = new CreationConsultationSerialisation();    
                 case "...":
                     break;
             }
