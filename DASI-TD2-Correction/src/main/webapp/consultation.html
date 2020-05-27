@@ -184,7 +184,7 @@
                             var madiums = response.listeMediums;
 
                             //boucler à travers les mediums et ajouter leurs données dans une table
-                            for(var i = madiums.length; i > 0; i++) {
+                            for(var i = 0; i < madiums.length; i++) {
                             //p101-102  
                                 liste += "<tr><td>" + madiums[i]["Type"] + "</td>";
                                 liste += "<td>" + madiums[i]["Denomination"] + "</td>";

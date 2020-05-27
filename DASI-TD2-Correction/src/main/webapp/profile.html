@@ -38,7 +38,9 @@
         
         
         <h2 style="color:white;">Votre historique de consultations </h2>
-
+        <br>
+        <span style="color:white;" id="consultations"></span>
+        <br>  
         <input type="button" name="bouton-consultation" value="Consulter un medium" onclick="self.location.href='consultation.html'"> 
         
         <button id="bouton-deconnecter">Se déconnecter</button>
@@ -110,9 +112,39 @@
                     
                         
             };
+            function initHistoConsult() {
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'GET',
+                        data: {
+                            todo: 'recupererHistoConsult'
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        var listeConsultations = response.liste;
+                        if (response.connexion) {
+                            $('#consultation').html(listeConsultations);
+                        }
+                        else {
+                            $('#consultation').html("Vous n'avez pas encore de consultations à votre actif, qu'attendez-vous pour connaître votre avenir ?"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                    
+                        
+            };
             $(document).ready( function () {
                 initDonneesProfil();
                 initProfilAstral();
+                initHistoConsult();
                 $('#bouton-enregistrer').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                      console.log("clic sur le bouton enregistrer"); // LOG dans Console Javascript
