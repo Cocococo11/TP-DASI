@@ -123,9 +123,17 @@
                     })
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
-                        var listeConsultations = response.liste;
+                        var listeC = response.liste;
+                        var liste = "<table border='1'><tr><th>Id Consultation</th><th>Commentaire</th><th>Medium</th></tr>";
                         if (response.connexion) {
-                            $('#consultation').html(listeConsultations);
+                            for(var i = 0; i < liste.length; i++) {
+                            //p101-102  
+                                liste += "<tr><td>" + listeC[i]["Type"] + "</td>";
+                                liste += "<td>" + listeC[i]["Denomination"] + "</td>";
+                                liste += "<td>" + listeC[i]["Genre"] + "</td>";
+                                $('#consultation').html(liste);
+                            }
+                        liste += "</table>";
                         }
                         else {
                             $('#consultation').html("Vous n'avez pas encore de consultations à votre actif, qu'attendez-vous pour connaître votre avenir ?"); // Message pour le paragraphe de notification
