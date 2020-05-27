@@ -112,6 +112,7 @@ public class Service {
         if(dispo != null)
         { 
             try {
+                JpaUtil.ouvrirTransaction();
                 System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
                 Consultation consultation = new Consultation(c, dispo, medium);
                 consul.conserverConsultation(consultation);
