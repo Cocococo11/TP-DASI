@@ -26,26 +26,24 @@ public class creerConsultation extends Action {
         Service service = new Service();
         Medium medium;
         
-        if(nomedium.equals("medium1"))
-        {
-            medium = service.rechercherMediumId((long)1);
-            System.out.println("Recherche du 1 medium :");
-        }
-        if(nomedium.equals("medium2"))
-        {
-            medium = service.rechercherMediumId((long)2);
-            System.out.println("Recherche du 2 medium :");
-        }
-        if(nomedium.equals("medium3"))
-        {
-            medium = service.rechercherMediumId((long)3);
-            System.out.println("Recherche du 3 medium :");
-        }
-        else
-        {
-            medium =null;
-            System.out.println("Pas de bon nom medium:");
-        }
+       switch (nomedium) {
+           case "medium1":
+               medium = service.rechercherMediumId((long)1);
+               System.out.println("Recherche du 1 medium :");
+               break;
+           case "medium2":
+               medium = service.rechercherMediumId((long)2);
+               System.out.println("Recherche du 2 medium :");
+               break;
+           case "medium3":
+               medium = service.rechercherMediumId((long)3);
+               System.out.println("Recherche du 3 medium :");
+               break;
+           default:
+               medium =null;
+               System.out.println("Pas de bon nom medium");
+               break;
+       }
         
         HttpSession session = request.getSession();
         Long id = (Long)session.getAttribute("idPersonne");
