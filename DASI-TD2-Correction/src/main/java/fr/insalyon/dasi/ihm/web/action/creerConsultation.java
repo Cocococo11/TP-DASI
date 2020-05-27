@@ -21,21 +21,22 @@ public class creerConsultation extends Action {
    @Override
     public void executer(HttpServletRequest request) {
         
-        String nomedium = request.getParameter("medium");
+        String nomedium = (String)request.getParameter("medium");
+        System.out.println("nommedium : "+ nomedium);
         Service service = new Service();
         Medium medium;
         
-        if(nomedium=="medium1")
+        if(nomedium.equals("medium1"))
         {
             medium = service.rechercherMediumId((long)1);
             System.out.println("Recherche du 1 medium :");
         }
-        if(nomedium=="medium2")
+        if(nomedium.equals("medium2"))
         {
             medium = service.rechercherMediumId((long)2);
             System.out.println("Recherche du 2 medium :");
         }
-        if(nomedium=="medium3")
+        if(nomedium.equals("medium3"))
         {
             medium = service.rechercherMediumId((long)3);
             System.out.println("Recherche du 3 medium :");
@@ -43,6 +44,7 @@ public class creerConsultation extends Action {
         else
         {
             medium =null;
+            System.out.println("Pas de bon nom medium:");
         }
         
         HttpSession session = request.getSession();
