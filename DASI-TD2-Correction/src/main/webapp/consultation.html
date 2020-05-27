@@ -80,8 +80,9 @@
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
                         if (response.consultation) {
-                            $('#notification').html("Consultation acceptée, veuillez vérifier vos mails");  // Message pour le paragraphe de notification
-                            var consultation = response.consultation;
+                            var medium = response.medium;
+                            $('#notification').html("Consultation acceptée avec le grand "+ medium.Denomination+" , veuillez vérifier vos mails");  // Message pour le paragraphe de notification
+                            
                         }
                         else {
                             $('#notification').html("Erreur de consultation"); // Message pour le paragraphe de notification
@@ -111,8 +112,9 @@
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
                         if (response.consultation) {
-                            $('#notification').html("Consultation acceptée, veuillez vérifier vos mails");  // Message pour le paragraphe de notification
-                            var consultation = response.consultation;
+                            var medium = response.medium;
+                            $('#notification').html("Consultation acceptée avec le grand "+ medium.Denomination+" , veuillez vérifier vos mails");  // Message pour le paragraphe de notification
+                            
                         }
                         else {
                             $('#notification').html("Erreur de consultation"); // Message pour le paragraphe de notification
@@ -143,8 +145,9 @@
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
                         if (response.consultation) {
-                            $('#notification').html("Consultation acceptée, veuillez vérifier vos mails");  // Message pour le paragraphe de notification
-                            var consultation = response.consultation;
+                            var medium = response.medium;
+                            $('#notification').html("Consultation acceptée avec le grand "+ medium.Denomination+" , veuillez vérifier vos mails");  // Message pour le paragraphe de notification
+                            
                         }
                         else {
                             $('#notification').html("Erreur de consultation"); // Message pour le paragraphe de notification

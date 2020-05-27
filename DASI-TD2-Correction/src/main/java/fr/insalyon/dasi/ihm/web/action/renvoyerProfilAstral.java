@@ -1,8 +1,6 @@
 package fr.insalyon.dasi.ihm.web.action;
 
 import fr.insalyon.dasi.metier.modele.Client;
-import fr.insalyon.dasi.metier.modele.Medium;
-import fr.insalyon.dasi.metier.modele.Personne;
 import fr.insalyon.dasi.metier.modele.ProfilAstro;
 import fr.insalyon.dasi.metier.service.Service;
 import java.io.IOException;

@@ -4,7 +4,6 @@ import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.service.Service;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  *
