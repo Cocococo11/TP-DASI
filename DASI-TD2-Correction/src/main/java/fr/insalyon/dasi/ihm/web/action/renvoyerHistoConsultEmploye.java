@@ -25,12 +25,12 @@ public class renvoyerHistoConsultEmploye extends Action {
         
         List<Consultation> liste = null;
         Service service = new Service();
-        for(long i=0;i<5;i++)
+        for(long i=1;i<3;i++)
         {
             Client client = (Client)service.rechercherPersonneParId(i);
             service.getHistoriqueConsultations(client);
 
-            if(client!=null)
+            if(client!=null && (client.getListeConsultations()!=null))
             {
                 liste.addAll(client.getListeConsultations());
             }
