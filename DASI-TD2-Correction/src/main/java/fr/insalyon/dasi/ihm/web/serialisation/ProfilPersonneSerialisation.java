@@ -20,13 +20,12 @@ public class ProfilPersonneSerialisation extends Serialisation {
 // Il va falloir séraliser un medium en renvoyant chacun de ses attributs en json pour les afficher en html
 
         Personne p = (Personne)request.getAttribute("personne");
-        String type = (String)request.getAttribute("type");
-        System.out.println("  ?" +type);
+        String typea = (String)request.getAttribute("type1");
+        System.out.println(typea);
         JsonObject container = new JsonObject();     
         
         Boolean connexion = (p != null);
         container.addProperty("connexion", connexion);
-        container.addProperty("type", "Employe");
         if (p != null) {
             JsonObject jsonPersonne = new JsonObject();
             
@@ -35,6 +34,7 @@ public class ProfilPersonneSerialisation extends Serialisation {
             jsonPersonne.addProperty("prenom", p.getPrenom());
             jsonPersonne.addProperty("mail", p.getMail());
             jsonPersonne.addProperty("telephone", p.getTelephone());
+            jsonPersonne.addProperty("typeo", typea);
             container.add("personne", jsonPersonne);
         }
         

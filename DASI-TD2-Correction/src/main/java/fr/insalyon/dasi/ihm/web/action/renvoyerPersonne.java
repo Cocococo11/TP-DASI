@@ -29,15 +29,19 @@ public class renvoyerPersonne extends Action {
 
         if(personne instanceof Client)
         {
-            request.setAttribute("type", "Client");
+            request.setAttribute("type1", "Client");
+            System.out.println(" Client !" +(personne instanceof Employe));
+            
         }
         else if(personne instanceof Employe)
         {
-            request.setAttribute("type", "Employe");
+            request.setAttribute("type1", "Employe");
+            System.out.println(" Employe !" +(personne instanceof Employe));
         }
         else if(personne instanceof Personne)
         {
-            request.setAttribute("type", "Employe");
+            request.setAttribute("type1", "Employe");
+            System.out.println(" Personne !" +(personne instanceof Employe));
         }
 
 

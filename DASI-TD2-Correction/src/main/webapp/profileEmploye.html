@@ -1,16 +1,180 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="fr">
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+         <link rel="icon" href="Images/crystal.png">
+        <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body style="background-image: url('Images/zodiac.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+
+        <h1 style="text-align:center;color:white;background-color: goldenrod;">Votre profil </h1>
+        <h1 style="font-family:Apple Chancery, cursive;color:white;text-align:center;font-size: 300%;background-color: goldenrod;"> Bienvenue, <span id="nom-personne"> </span></h1>
+        
+        <h2 style="color:white;">Vos informations </h2>
+        <ul style="color:white;">
+            <li style="margin-bottom: 15px;">Prénom: <input type="text" id="champ-prenom" size="40" /></li> 
+            <li style="margin-bottom: 15px;">Nom: <input type="text" id="champ-nom" size="40" /></li> 
+            <li style="margin-bottom: 15px;">Email: <input type="text" id="champ-email" size="40" /></li> 
+            <li style="margin-bottom: 15px;">Téléphone: <input type="text" id="champ-telephone" size="40" /></li>    
+        </ul>
+        <button id="bouton-enregistrer"><span id="span-enregistrer">Enregistrer les modifications</span></button>
+        
+        
+        
+        <h2 style="color:white;">L'historique de consultations </h2>
+        <br>
+        <span style="color:white;" id="consultations">Vos consultations:</span>
+        <br>  
+        <input type="button" name="bouton-consultation" value="Consulter un medium" onclick="self.location.href='consultation.html'"> 
+        
+        <button id="bouton-deconnecter">Se déconnecter</button>
+        
+
+        <script>
+            function initDonneesProfil() {
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'GET',
+                        data: {
+                            todo: 'recuperer-donnees'
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        var personne = response.personne;
+                        if (response.connexion) {
+                            $('#nom-personne').html(personne.prenom +' '+personne.nom);
+                            $('#champ-prenom').val(personne.prenom);
+                            $('#champ-nom').val(personne.nom);
+                            $('#champ-email').val(personne.mail);
+                            $('#champ-telephone').val(personne.telephone);
+                        }
+                        else {
+                            $('#nom-personne').html("Veuillez vous connecter d'abord"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                    
+                        
+            };
+            function initHistoConsult() {
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'GET',
+                        data: {
+                            todo: 'recupererHistoConsultEmploye'
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                        console.log('Response',response); // LOG dans Console Javascript
+                        var listeC = response.liste;
+                        var liste = "<table border='1'><tr><th>Id Consultation</th><th>Commentaire</th><th>Medium</th></tr>";
+                        if (response.connexion) {
+                            for(var i = 0; i < listeC.length; i++) {
+                            //p101-102  
+                                liste += "<tr><td>" + listeC[i]["id"] + "</td>";
+                                liste += "<td>" + listeC[i]["Commentaire"] + "</td>";
+                                liste += "<td>" + listeC[i]["Medium"] + "</td>";
+                                
+                            }
+                        liste += "</table>";
+                        $('#consultations').html(liste);
+                        }
+                        else {
+                            $('#consultation').html("Vous n'avez pas encore de consultations à votre actif, qu'attendez-vous pour connaître votre avenir ?"); // Message pour le paragraphe de notification
+                        }
+                    })
+                    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                        console.log('Error',error); // LOG dans Console Javascript
+                        alert("Erreur lors de l'appel AJAX");
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        
+                    });
+                    
+                        
+            };
+            $(document).ready( function () {
+                initDonneesProfil();
+                initHistoConsult();
+                $('#bouton-enregistrer').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                     console.log("clic sur le bouton enregistrer"); // LOG dans Console Javascript
+                     $('#span-enregistrer').html("Enregistrement..."); // Message pour le paragraphe de notification
+
+                     // Récupération de la valeur des champs du formulaire
+                     var champMail = $('#champ-mail').val();
+                     var champPrenom = $('#champ-prenom').val();
+                     var champNom = $('#champ-nom').val();
+                     var champTelephone = $('#champ-telephone').val();
+
+                     // Appel AJAX
+                     $.ajax({
+                         url: './ActionServlet',
+                         method: 'POST',
+                         data: {
+                             todo: 'modifierDonneesClient',
+                             mail:  champMail,
+                             prenom: champPrenom,
+                             telephone: champTelephone,
+                             nom: champNom
+                           
+                         },
+                         dataType: 'json'
+                     })
+                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                         console.log('Response',response); // LOG dans Console Javascript
+                         if (response.changement) {
+                             $('#notification').html("Changement effectué");  // Message pour le paragraphe de notification
+                         }
+                         else {
+                             $('#notification').html("Veuillez réessayer plus tard :^)"); // Message pour le paragraphe de notification
+                         }
+                     })
+                     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                         console.log('Error',error); // LOG dans Console Javascript
+                         alert("Erreur lors de l'appel AJAX");
+                     })
+                     .always( function () { // Fonction toujours appelée
+
+                     });
+                 });
+                 $('#bouton-deconnecter').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+
+                     console.log("clic sur le bouton deconnecter"); // LOG dans Console Javascript
+                     $.ajax({
+                         url: './ActionServlet',
+                         method: 'GET',
+                         data: {
+                             todo: 'deconnecter'                  
+                         },
+                         dataType: 'json'
+                     })
+                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                         console.log('Response',response); // LOG dans Console Javascript
+                         window.location.href = "index.html";
+                     })
+                     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                         console.log('Error',error); // LOG dans Console Javascript
+                         alert("Erreur lors de l'appel AJAX");
+                     })
+                     .always( function () { // Fonction toujours appelée
+
+                     });
+                 });
+
+            });
+            
+        </script>
     </body>
 </html>

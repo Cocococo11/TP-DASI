@@ -7,6 +7,7 @@ import fr.insalyon.dasi.ihm.web.action.InscrireClient;
 import fr.insalyon.dasi.ihm.web.action.creerConsultation;
 import fr.insalyon.dasi.ihm.web.action.modifierDonneesClient;
 import fr.insalyon.dasi.ihm.web.action.renvoyerHistoConsult;
+import fr.insalyon.dasi.ihm.web.action.renvoyerHistoConsultEmploye;
 import fr.insalyon.dasi.ihm.web.action.renvoyerListeMediums;
 import fr.insalyon.dasi.ihm.web.action.renvoyerPersonne;
 import fr.insalyon.dasi.ihm.web.action.renvoyerProfilAstral;
@@ -63,6 +64,10 @@ public class ActionServlet extends HttpServlet {
                 case "connecter":
                     action = new AuthentifierPersonneAction();
                     serialisation = new ProfilPersonneSerialisation();
+                    break;
+                case "recupererHistoConsultEmploye":
+                    action = new renvoyerHistoConsultEmploye();
+                    serialisation = new CreationHistoConsultationSerialisation();
                     break;
                 case "recupererListeMediums":
                     action = new renvoyerListeMediums();
