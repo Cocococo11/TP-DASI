@@ -5,6 +5,7 @@ import fr.insalyon.dasi.ihm.web.action.Action;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierPersonneAction;
 import fr.insalyon.dasi.ihm.web.action.InscrireClient;
 import fr.insalyon.dasi.ihm.web.action.creerConsultation;
+import fr.insalyon.dasi.ihm.web.action.modifierDonneesClient;
 import fr.insalyon.dasi.ihm.web.action.renvoyerHistoConsult;
 import fr.insalyon.dasi.ihm.web.action.renvoyerListeMediums;
 import fr.insalyon.dasi.ihm.web.action.renvoyerPersonne;
@@ -18,6 +19,7 @@ import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilMediumSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilPersonneSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.modifierSerialisation;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -89,6 +91,10 @@ public class ActionServlet extends HttpServlet {
                 case "recupererHistoConsult":
                     action = new renvoyerHistoConsult();
                     serialisation = new CreationHistoConsultationSerialisation(); 
+                    break;
+                case "modifierDonneesClient":
+                    action = new modifierDonneesClient();
+                    serialisation = new modifierSerialisation(); 
                     break;
                 case "...":
                     break;
