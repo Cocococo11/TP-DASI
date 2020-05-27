@@ -44,14 +44,19 @@ public class Service {
         PersonneDao personneDao = new PersonneDao();
         List<Consultation> liste = null;
         try {
+            JpaUtil.ouvrirTransaction();
             liste = personneDao.recupererConsultations(c);
+            c.setListeConsultations(liste);
+            JpaUtil.validerTransaction();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service getHistoriqueConsultations(mail)", ex);
             liste = null;
+            JpaUtil.annulerTransaction();
+
         } finally {
             JpaUtil.fermerContextePersistance();
         }
-        c.setListeConsultations(liste);
+        
     }
     public Personne rechercherPersonneParId(Long id) {
         Personne resultat = null;
