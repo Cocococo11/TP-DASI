@@ -26,10 +26,9 @@ public class ProfilPersonneSerialisation extends Serialisation {
         
         Boolean connexion = (p != null);
         container.addProperty("connexion", connexion);
-        container.addProperty("type", type);
+        container.addProperty("type", "Employe");
         if (p != null) {
             JsonObject jsonPersonne = new JsonObject();
-            JsonObject jsonType = new JsonObject();
             
             jsonPersonne.addProperty("id", p.getId());
             jsonPersonne.addProperty("nom", p.getNom());
