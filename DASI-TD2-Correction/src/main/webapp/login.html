@@ -61,11 +61,11 @@
                             var personne = response.personne;
                             var type = response.type;
                             $('#notification').html("Bienvenue " + personne.prenom + " " + personne.nom + " (ID " + personne.id + ")");  // Message pour le paragraphe de notification
-                            if( type == "Client")
+                            if( type === "Client")
                             {
                                 window.location.href = "profile.html";
                             }
-                            else if(type == "Employe")
+                            else if(type === "Employe")
                             {
                                 window.location.href = "profileEmploye.html";
                             }

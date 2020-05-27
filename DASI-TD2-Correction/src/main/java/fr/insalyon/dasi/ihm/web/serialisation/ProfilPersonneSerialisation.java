@@ -28,6 +28,8 @@ public class ProfilPersonneSerialisation extends Serialisation {
         
         if (p != null) {
             JsonObject jsonPersonne = new JsonObject();
+            JsonObject jsonType = new JsonObject();
+            
             jsonPersonne.addProperty("id", p.getId());
             jsonPersonne.addProperty("nom", p.getNom());
             jsonPersonne.addProperty("prenom", p.getPrenom());
@@ -35,6 +37,7 @@ public class ProfilPersonneSerialisation extends Serialisation {
             jsonPersonne.addProperty("telephone", p.getTelephone());
             
             container.add("personne", jsonPersonne);
+            container.add("type", jsonType);
         }
         
 

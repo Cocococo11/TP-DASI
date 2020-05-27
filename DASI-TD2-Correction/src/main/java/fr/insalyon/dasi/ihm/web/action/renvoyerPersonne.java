@@ -1,6 +1,8 @@
 package fr.insalyon.dasi.ihm.web.action;
 
 import fr.insalyon.dasi.metier.modele.Personne;
+import fr.insalyon.dasi.metier.modele.Client;
+import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,16 @@ public class renvoyerPersonne extends Action {
  
         request.setAttribute("personne", personne);
 
+        if(personne instanceof Client)
+        {
+            request.setAttribute("type", "Client");
+        }
+        else if(personne instanceof Employe)
+        {
+            request.setAttribute("type", "Employe");
+        }
+
+                
     }
     
 }
