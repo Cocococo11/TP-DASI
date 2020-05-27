@@ -19,9 +19,12 @@ public class renvoyerPersonne extends Action {
         Service service = new Service();
         HttpSession session = request.getSession();
         Long id = (Long)session.getAttribute("idPersonne");
-        System.out.println(id);
         Personne personne = service.rechercherPersonneParId(id);
- 
+        
+        System.out.println(" client ?" +(personne instanceof Client));
+        System.out.println(" Personne ?" +(personne instanceof Personne));
+        System.out.println(" Employe ?" +(personne instanceof Employe));
+        
         request.setAttribute("personne", personne);
 
         if(personne instanceof Client)
@@ -32,6 +35,11 @@ public class renvoyerPersonne extends Action {
         {
             request.setAttribute("type", "Employe");
         }
+        else if(personne instanceof Personne)
+        {
+            request.setAttribute("type", "Employe");
+        }
+
 
                 
     }

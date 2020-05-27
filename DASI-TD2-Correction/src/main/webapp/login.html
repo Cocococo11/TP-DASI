@@ -59,7 +59,7 @@
                             // TODO: afficher les informations de la personne dans la notification
                             // Exemple: Connexion de Ada Lovelace (ID 1)
                             var personne = response.personne;
-                            var type = response.type.type;
+                            var type = response.type;
                             $('#notification').html("Bienvenue " + personne.prenom + " " + personne.nom + " (ID " + personne.id + ")");  // Message pour le paragraphe de notification
                             if( type === "Client")
                             {

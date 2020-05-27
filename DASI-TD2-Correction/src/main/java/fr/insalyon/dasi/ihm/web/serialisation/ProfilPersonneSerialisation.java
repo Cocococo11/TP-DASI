@@ -21,11 +21,12 @@ public class ProfilPersonneSerialisation extends Serialisation {
 
         Personne p = (Personne)request.getAttribute("personne");
         String type = (String)request.getAttribute("type");
+        System.out.println("  ?" +type);
         JsonObject container = new JsonObject();     
         
         Boolean connexion = (p != null);
         container.addProperty("connexion", connexion);
-        
+        container.addProperty("type", type);
         if (p != null) {
             JsonObject jsonPersonne = new JsonObject();
             JsonObject jsonType = new JsonObject();
@@ -35,9 +36,7 @@ public class ProfilPersonneSerialisation extends Serialisation {
             jsonPersonne.addProperty("prenom", p.getPrenom());
             jsonPersonne.addProperty("mail", p.getMail());
             jsonPersonne.addProperty("telephone", p.getTelephone());
-            jsonType.addProperty("type",type);
             container.add("personne", jsonPersonne);
-            container.add("type", jsonType);
         }
         
 
