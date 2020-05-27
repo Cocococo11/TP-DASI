@@ -25,6 +25,11 @@ public class PersonneDao {
         em.merge(consultation);
     }
     
+    public void modifierClient(Client c ){
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        em.merge(c);
+    }
+    
     public void conserverConsultation(Consultation consultation) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         em.persist(consultation);
