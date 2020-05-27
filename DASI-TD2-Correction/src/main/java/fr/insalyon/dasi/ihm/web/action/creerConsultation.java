@@ -28,15 +28,15 @@ public class creerConsultation extends Action {
         
        switch (nomedium) {
            case "medium1":
-               medium = service.rechercherMediumId((long)1);
+               medium = service.rechercherMediumId((long)3);
                System.out.println("Recherche du 1 medium :");
                break;
            case "medium2":
-               medium = service.rechercherMediumId((long)2);
+               medium = service.rechercherMediumId((long)1);
                System.out.println("Recherche du 2 medium :");
                break;
            case "medium3":
-               medium = service.rechercherMediumId((long)3);
+               medium = service.rechercherMediumId((long)2);
                System.out.println("Recherche du 3 medium :");
                break;
            default:
