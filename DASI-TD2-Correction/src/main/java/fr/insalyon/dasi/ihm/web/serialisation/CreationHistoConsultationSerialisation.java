@@ -2,12 +2,15 @@ package fr.insalyon.dasi.ihm.web.serialisation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.insalyon.dasi.metier.modele.Astrologue;
+import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Spirite;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,33 +24,24 @@ public class CreationHistoConsultationSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         
-        Medium m = (Medium)request.getAttribute("medium");
+        List<Consultation> liste = (List<Consultation>)request.getAttribute("liste");
         
         JsonObject container = new JsonObject();     
         
-        Boolean consultation = (m != null);
-        System.out.println("medium: "+m);
-        container.addProperty("consultation", consultation);
+        Boolean connexion = (liste != null);
+        container.addProperty("connexion", connexion);
         
-        if (m != null) {
-                JsonObject jsonMedium = new JsonObject();
-                jsonMedium.addProperty("id", m.getId());
-                jsonMedium.addProperty("Type", m.getClass().getSimpleName());
-                jsonMedium.addProperty("Genre", m.getGenre());
-                jsonMedium.addProperty("Denomination", m.getDenomination());
-                jsonMedium.addProperty("Presentation", m.getPresentation());
-                if(m instanceof Spirite)
-                {
-                    Spirite p = (Spirite)m;
-                    jsonMedium.addProperty("Support", p.getSupport());
-                }
-                if(m instanceof Astrologue)
-                {
-                    Astrologue p = (Astrologue)m;
-                    jsonMedium.addProperty("Promotion", p.getPromotion());
-                    jsonMedium.addProperty("Formation", p.getFormation());
-                } 
-            container.add("medium",jsonMedium);
+        if (liste != null) {
+            JsonArray jsonListe = new JsonArray();
+            for(Consultation c : liste) {
+                JsonObject jsonConsultation = new JsonObject();
+                
+                jsonConsultation.addProperty("id", c.getId());
+                jsonConsultation.addProperty("Commentaire", c.getCommentaire());
+                jsonConsultation.addProperty("Medium", c.getMedium().getDenomination());
+                jsonListe.add( jsonConsultation);
+            }
+            container.add("liste",jsonListe);
         }
         
 

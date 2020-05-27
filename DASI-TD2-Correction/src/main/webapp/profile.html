@@ -39,7 +39,7 @@
         
         <h2 style="color:white;">Votre historique de consultations </h2>
         <br>
-        <span style="color:white;" id="consultations"></span>
+        <span style="color:white;" id="consultations">Vos consultations:</span>
         <br>  
         <input type="button" name="bouton-consultation" value="Consulter un medium" onclick="self.location.href='consultation.html'"> 
         
@@ -123,9 +123,18 @@
                     })
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
-                        var listeConsultations = response.liste;
+                        var listeC = response.liste;
+                        var liste = "<table border='1'><tr><th>Id Consultation</th><th>Commentaire</th><th>Medium</th></tr>";
                         if (response.connexion) {
-                            $('#consultation').html(listeConsultations);
+                            for(var i = 0; i < listeC.length; i++) {
+                            //p101-102  
+                                liste += "<tr><td>" + listeC[i]["id"] + "</td>";
+                                liste += "<td>" + listeC[i]["Commentaire"] + "</td>";
+                                liste += "<td>" + listeC[i]["Medium"] + "</td>";
+                                
+                            }
+                        liste += "</table>";
+                        $('#consultations').html(liste);
                         }
                         else {
                             $('#consultation').html("Vous n'avez pas encore de consultations à votre actif, qu'attendez-vous pour connaître votre avenir ?"); // Message pour le paragraphe de notification
