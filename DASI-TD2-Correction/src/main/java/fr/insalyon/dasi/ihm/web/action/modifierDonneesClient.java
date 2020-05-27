@@ -14,15 +14,10 @@ public class modifierDonneesClient extends Action {
     @Override
     public void executer(HttpServletRequest request) {
         
-        String Prenom = request.getParameter("Prenom");
-        String Nom = request.getParameter("Nom");
-        String Anniversaire = request.getParameter("Anniversaire");
-        String Adresse = request.getParameter("Adresse");
-        String Code = request.getParameter("Code");
-        String Ville = request.getParameter("Ville");
-        String Phone = request.getParameter("Phone");
-        String Email = request.getParameter("Email");
-        String MotDePasse = request.getParameter("MotDePasse");
+        String Prenom = request.getParameter("prenom");
+        String Nom = request.getParameter("nom");
+        String Phone = request.getParameter("telephone");
+        String Email = request.getParameter("mail");
         
         
         Service service = new Service();
