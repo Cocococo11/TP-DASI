@@ -34,6 +34,11 @@ public class PersonneDao {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         return em.find(Personne.class, personneId); // renvoie null si l'identifiant n'existe pas
     }
+    
+    public Medium chercherMediumParId(Long mediumId) {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        return em.find(Medium.class, mediumId); // renvoie null si l'identifiant n'existe pas
+    }
 
     public Personne chercherParMail(String idMail) {
         EntityManager em = JpaUtil.obtenirContextePersistance();

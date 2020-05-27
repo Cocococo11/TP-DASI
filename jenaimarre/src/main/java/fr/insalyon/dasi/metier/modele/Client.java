@@ -5,7 +5,6 @@
  */
 package fr.insalyon.dasi.metier.modele;
 
-import fr.insalyon.dasi.metier.service.Service;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Temporal;

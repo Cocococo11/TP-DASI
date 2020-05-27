@@ -7,12 +7,9 @@ import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Consultation;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -69,6 +66,20 @@ public class Service {
         }
         return resultat;
     }
+    
+    public Medium rechercherMediumId(Long id) {
+        Medium resultat = null;
+        JpaUtil.creerContextePersistance();
+        try {
+            resultat = personneDao.chercherMediumParId(id);
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service rechercherMediumParId(id)", ex);
+            resultat = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return resultat;
+    }
 
     public Personne authentifierPersonne(String mail, String motDePasse) {
         Personne resultat = null;
@@ -94,23 +105,25 @@ public class Service {
     /*
     * Demander une consultation avec un medium
     */
-    public void demanderConsultation(Client c, Medium medium) {
+    public void demanderConsultation(Client c, Medium medium) throws Exception {
         JpaUtil.creerContextePersistance();
         PersonneDao consul = new PersonneDao();
         Employe dispo =  consul.trouverEmployeDispo();
         if(dispo != null)
-        {
-            System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
-            Consultation consultation = new Consultation(c, dispo, medium);
-            consul.conserverConsultation(consultation);
-            dispo.setDisponible(false);
-        
+        { 
+            try {
+                System.out.println("On a trouvé un employé !!! Son Id est : " + dispo.getId());
+                Consultation consultation = new Consultation(c, dispo, medium);
+                consul.conserverConsultation(consultation);
+                dispo.setDisponible(false);
+                JpaUtil.validerTransaction();
+            } catch (Exception ex) {
+                Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service inscrireClient(client)", ex);
+                JpaUtil.annulerTransaction();
+            } finally {
+                JpaUtil.fermerContextePersistance();
+            }
         }
-        else
-        {
-            System.out.println("Pas d'employé trouvé");
-        }
-        JpaUtil.fermerContextePersistance();
     }
     
     public List<Personne> listerPersonnes() {

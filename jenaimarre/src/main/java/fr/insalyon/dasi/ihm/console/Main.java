@@ -343,7 +343,7 @@ public class Main {
         Medium wouhou = new Cartomancien("pouf","pif","paf");
         Client claude = new Client("COCOCOCO", "Tom", "tomco@gmail.com", "asdfaf", "876567899", new Date(), "homme");
         service.listerPersonnes();
-        service.demanderConsultation(claude, wouhou);
+        //service.demanderConsultation(claude, wouhou);
         service.getHistoriqueConsultations(claude);
         for(Consultation c : claude.getListeConsultations())
         {
