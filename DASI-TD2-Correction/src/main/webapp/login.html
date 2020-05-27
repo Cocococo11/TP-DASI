@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="Images/crystal.png">
         <!-- Librairie Javascript: jQuery (v3.4.1) -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="./jquery-3.4.1.min.js"></script>
     </head>
     <body class="index-body">
 
@@ -59,8 +59,16 @@
                             // TODO: afficher les informations de la personne dans la notification
                             // Exemple: Connexion de Ada Lovelace (ID 1)
                             var personne = response.personne;
+                            var type = response.type;
                             $('#notification').html("Bienvenue " + personne.prenom + " " + personne.nom + " (ID " + personne.id + ")");  // Message pour le paragraphe de notification
-                            window.location.href = "profile.html";
+                            if( type === "Client")
+                            {
+                                window.location.href = "profile.html";
+                            }
+                            else if(type === "Employe")
+                            {
+                                window.location.href = "profileEmploye.html";
+                            }
                         }
                         else {
                             $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification

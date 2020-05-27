@@ -1,6 +1,8 @@
 package fr.insalyon.dasi.ihm.web.action;
 
 import fr.insalyon.dasi.metier.modele.Personne;
+import fr.insalyon.dasi.metier.modele.Client;
+import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,11 +19,29 @@ public class renvoyerPersonne extends Action {
         Service service = new Service();
         HttpSession session = request.getSession();
         Long id = (Long)session.getAttribute("idPersonne");
-        System.out.println(id);
         Personne personne = service.rechercherPersonneParId(id);
- 
+        
+        System.out.println(" client ?" +(personne instanceof Client));
+        System.out.println(" Personne ?" +(personne instanceof Personne));
+        System.out.println(" Employe ?" +(personne instanceof Employe));
+        
         request.setAttribute("personne", personne);
 
+        if(personne instanceof Client)
+        {
+            request.setAttribute("type", "Client");
+        }
+        else if(personne instanceof Employe)
+        {
+            request.setAttribute("type", "Employe");
+        }
+        else if(personne instanceof Personne)
+        {
+            request.setAttribute("type", "Employe");
+        }
+
+
+                
     }
     
 }

@@ -62,7 +62,7 @@ public class ActionServlet extends HttpServlet {
             switch (todo) {
                 case "connecter":
                     action = new AuthentifierPersonneAction();
-                    serialisation = new ProfilClientSerialisation();
+                    serialisation = new ProfilPersonneSerialisation();
                     break;
                 case "recupererListeMediums":
                     action = new renvoyerListeMediums();

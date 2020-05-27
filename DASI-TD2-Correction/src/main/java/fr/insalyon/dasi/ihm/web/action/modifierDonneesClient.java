@@ -28,7 +28,7 @@ public class modifierDonneesClient extends Action {
         c.setNom(Nom);
         c.setMail(Email);
         // Il manque juste le service correspondant
-        //service.updateClient(c);        
+        service.modifierClient(c);        
 
     }
     

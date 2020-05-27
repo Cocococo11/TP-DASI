@@ -38,6 +38,23 @@ public class Service {
         return resultat;
     }
     
+    public Long modifierClient(Client client) {
+        Long resultat = null;
+        JpaUtil.creerContextePersistance();
+        try {
+            JpaUtil.ouvrirTransaction();
+            personneDao.modifierClient(client);
+            JpaUtil.validerTransaction();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service modifierCliednt(client)", ex);
+            JpaUtil.annulerTransaction();
+            resultat = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return resultat;
+    }
+    
     public void getHistoriqueConsultations(Client c)
     {
         JpaUtil.creerContextePersistance();
